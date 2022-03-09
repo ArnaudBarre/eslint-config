@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-config",
   "description": "TS-React focused eslint configuration",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "index.js",
@@ -9,6 +9,10 @@
     "index.js"
   ],
   "repository": "github:ArnaudBarre/eslint-config",
+  "scripts": {
+    "prepublishOnly": "cp ../README.md README.md",
+    "postpublish": "git checkout -- README.md"
+  },
   "dependencies": {
     "@arnaud-barre/eslint-plugin-custom": "^1.0.2",
     "@arnaud-barre/eslint-plugin-local": "^1.0.2",

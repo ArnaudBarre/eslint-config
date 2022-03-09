@@ -232,7 +232,7 @@ module.exports = {
     "@typescript-eslint/unified-signatures": "warn",
 
     // https://github.com/benmosher/eslint-plugin-import#rules
-    "import/no-unresolved": "error",
+    "import/no-unresolved": ["error", { ignore: ["^virtual:"] }],
     "import/first": "error",
     "import/no-amd": "error",
     "import/no-default-export": "warn",

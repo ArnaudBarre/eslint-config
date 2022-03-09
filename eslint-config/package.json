@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-config",
   "description": "TS-React focused eslint configuration",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "index.js",

@@ -39,7 +39,7 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: true,
   },
   settings: {
-    "react": { version: "detect" },
+    "react": { version: "17.0" },
     "import/resolver": {
       typescript: { project: ["./tsconfig.json", "./*/tsconfig.json"] },
     },
@@ -113,7 +113,6 @@ module.exports = {
     "no-restricted-globals": ["error"].concat(restrictedGlobals),
     "func-style": "warn",
     "no-bitwise": "warn",
-    "no-continue": "warn",
     "no-mixed-operators": [
       "warn",
       {

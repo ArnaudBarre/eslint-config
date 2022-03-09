@@ -1,0 +1,22 @@
+{
+  "include": ["rules", "tests", "index.ts"],
+  "compilerOptions": {
+    /* Target node14 */
+    "module": "CommonJS",
+    "lib": ["ES2020"],
+    "target": "ES2020",
+
+    /* Imports */
+    "moduleResolution": "node", // Allow `index` imports
+    "resolveJsonModule": true, // Allow json import
+    "forceConsistentCasingInFileNames": true, // Avoid difference in case between file name and import
+    "esModuleInterop": true, // Allow import fs from "fs"
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true
+  }
+}

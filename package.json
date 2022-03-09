@@ -1,0 +1,21 @@
+{
+  "name": "eslint-config",
+  "description": "Monorepo for @arnaud-barre/eslint-config",
+  "private": true,
+  "workspaces": [
+    "eslint-config",
+    "eslint-plugin-custom",
+    "eslint-plugin-local"
+  ],
+  "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
+  "scripts": {
+    "prettier": "prettier --write '**/*.{js,ts,json,md}'"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "quoteProps": "consistent"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}

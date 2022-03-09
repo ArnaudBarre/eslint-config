@@ -1,0 +1,27 @@
+{
+  "name": "@arnaud-barre/eslint-config",
+  "description": "TS-React focused eslint configuration",
+  "version": "1.0.4",
+  "license": "MIT",
+  "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "repository": "github:ArnaudBarre/eslint-config",
+  "dependencies": {
+    "@arnaud-barre/eslint-plugin-custom": "^1.0.2",
+    "@arnaud-barre/eslint-plugin-local": "^1.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "confusing-browser-globals": "^1.0.11",
+    "eslint": "^8.10.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-refresh": "^0.2.1",
+    "eslint-plugin-unicorn": "^40.1.0"
+  }
+}

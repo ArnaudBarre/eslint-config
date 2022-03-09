@@ -1,4 +1,4 @@
-# eslint-plugin-custom [![npm](https://img.shields.io/npm/v/arnaud-barre/eslint-plugin-custom)](https://www.npmjs.com/package/arnaud-barre/eslint-plugin-custom)
+# eslint-plugin-custom [![npm](https://img.shields.io/npm/v/@arnaud-barre/eslint-plugin-custom)](https://www.npmjs.com/package/@arnaud-barre/eslint-plugin-custom)
 
 Custom rules for `@arnaud-barre/eslint-config`:
 

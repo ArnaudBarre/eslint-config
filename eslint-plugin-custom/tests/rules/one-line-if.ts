@@ -29,6 +29,12 @@ export const cases: Cases = {
     return 3;
   }`,
     },
+    {
+      name: "Empty statement",
+      code: `if (value === 0) {
+    
+  }`,
+    },
   ],
   invalid: [
     {

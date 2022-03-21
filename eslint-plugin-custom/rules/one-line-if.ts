@@ -17,6 +17,7 @@ export const rule: TSESLint.RuleModule<"error"> = {
         node.test.loc.start.line === node.test.loc.end.line &&
         node.consequent.loc.end.line === node.test.loc.start.line + 2 &&
         node.consequent.type === "BlockStatement" &&
+        node.consequent.body.length > 0 && // Empty body handled by no-empty
         node.test.loc.end.column + getLength(node.consequent.body[0].range) < 79
       ) {
         const body = node.consequent.body[0];

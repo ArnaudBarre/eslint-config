@@ -2,9 +2,6 @@ import { ESLintUtils } from "@typescript-eslint/utils";
 import { rules } from "..";
 import { Cases } from "./types";
 
-// @ts-ignore https://github.com/typescript-eslint/typescript-eslint/pull/4656
-globalThis.afterAll = () => {};
-
 const ruleTester = new ESLintUtils.RuleTester({
   parser: "@typescript-eslint/parser",
   parserOptions: {

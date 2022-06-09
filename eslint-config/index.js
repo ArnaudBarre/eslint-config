@@ -176,6 +176,11 @@ module.exports = {
         filter: { regex: "^__", match: false },
       },
       { selector: "typeLike", format: ["PascalCase"] },
+      {
+        selector: ["objectLiteralProperty"],
+        format: null,
+        modifiers: ["requiresQuotes"],
+      },
     ],
     "@typescript-eslint/no-array-constructor": "warn",
     "@typescript-eslint/no-confusing-void-expression": [

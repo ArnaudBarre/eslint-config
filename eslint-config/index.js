@@ -177,7 +177,7 @@ module.exports = {
       },
       { selector: "typeLike", format: ["PascalCase"] },
       {
-        selector: ["objectLiteralProperty"],
+        selector: ["objectLiteralProperty", "typeProperty"],
         format: null,
         modifiers: ["requiresQuotes"],
       },

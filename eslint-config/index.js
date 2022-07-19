@@ -195,7 +195,8 @@ module.exports = {
     "@typescript-eslint/no-inferrable-types": "warn",
     "@typescript-eslint/no-misused-promises": [
       "warn",
-      { checksVoidReturn: { arguments: false } },
+      // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-misused-promises.md#checksvoidreturn
+      { checksVoidReturn: { arguments: false, attributes: false } },
     ],
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
     "@typescript-eslint/no-require-imports": "warn",

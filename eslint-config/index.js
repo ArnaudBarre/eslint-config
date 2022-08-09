@@ -213,10 +213,6 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    "@typescript-eslint/no-use-before-define": [
-      "warn",
-      { variables: false, classes: false },
-    ],
     "@typescript-eslint/no-useless-empty-export": "warn",
     "@typescript-eslint/no-useless-constructor": "warn",
     "@typescript-eslint/no-redundant-type-constituents": "warn",

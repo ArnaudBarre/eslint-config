@@ -9,8 +9,10 @@ export const rule: TSESLint.RuleModule<"error"> = {
     fixable: "code",
     schema: [],
   },
+  defaultOptions: [],
   create: (context) => ({
     TemplateLiteral: (node) => {
+      if (node.parent?.type === "TaggedTemplateExpression") return;
       if (node.quasis.length > 1) return;
       const value = node.quasis[0].value.raw;
       if (value.includes("'") && value.includes('"')) return;

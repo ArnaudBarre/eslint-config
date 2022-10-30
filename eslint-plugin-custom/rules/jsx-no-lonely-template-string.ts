@@ -12,6 +12,7 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
     fixable: "code",
     schema: [],
   },
+  defaultOptions: [],
   create: (context) => ({
     JSXExpressionContainer: (node) => {
       if (node.expression.type !== "TemplateLiteral") return;

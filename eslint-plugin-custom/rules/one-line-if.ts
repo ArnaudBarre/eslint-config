@@ -9,6 +9,7 @@ export const rule: TSESLint.RuleModule<"error"> = {
     fixable: "code",
     schema: [],
   },
+  defaultOptions: [],
   create: (context) => ({
     IfStatement: (node) => {
       if (

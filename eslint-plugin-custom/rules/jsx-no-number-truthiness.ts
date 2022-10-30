@@ -11,6 +11,7 @@ export const rule: TSESLint.RuleModule<"error"> = {
     type: "problem",
     schema: [],
   },
+  defaultOptions: [],
   create: (context) => {
     const service = ESLintUtils.getParserServices(context);
     const typeChecker = service.program.getTypeChecker();

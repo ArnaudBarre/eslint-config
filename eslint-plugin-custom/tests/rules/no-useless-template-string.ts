@@ -15,9 +15,13 @@ export const cases: Cases = {
       code: "`Some 'weird \"quoting\"'`",
     },
     {
-      name: `Multilines template`,
+      name: "Multilines template",
       code: `\`Some template
   on two lines\``,
+    },
+    {
+      name: "Tagged template",
+      code: 'prisma.queryRaw`SELECT * FROM "User"`',
     },
   ],
   invalid: [

@@ -44,9 +44,8 @@ exports.rules = {
 };
 ```
 
-## .eslintrc.js
-
 ```js
+//  .eslintrc.js
 module.exports = {
   root: true,
   extends: ["@arnaud-barre"],

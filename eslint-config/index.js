@@ -39,7 +39,7 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: true,
   },
   settings: {
-    "react": { version: "17.0" },
+    "react": { version: "18.2" },
     "import/resolver": {
       typescript: { project: ["./tsconfig.json", "./*/tsconfig.json"] },
     },
@@ -195,8 +195,11 @@ module.exports = {
     "@typescript-eslint/no-inferrable-types": "warn",
     "@typescript-eslint/no-misused-promises": [
       "warn",
-      // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-misused-promises.md#checksvoidreturn
-      { checksVoidReturn: { arguments: false, attributes: false } },
+      {
+        checksConditionals: false, // Caught by TS > 4.4
+        // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-misused-promises.md#checksvoidreturn
+        checksVoidReturn: { arguments: false, attributes: false },
+      },
     ],
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
     "@typescript-eslint/no-require-imports": "warn",
@@ -316,7 +319,7 @@ module.exports = {
     // https://github.com/ArnaudBarre/eslint-plugin-react-refresh
     "react-refresh/only-export-components": "warn",
 
-    // https://github.com/ArnaudBarre/eslint-plugin-react-refresh
+    // https://github.com/ArnaudBarre/eslint-config/tree/main/eslint-plugin-custom
     "@arnaud-barre/custom/jsx-no-lonely-template-string": "warn",
     "@arnaud-barre/custom/jsx-no-number-truthiness": "warn",
     "@arnaud-barre/custom/no-useless-template-string": "warn",

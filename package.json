@@ -16,6 +16,7 @@
     "quoteProps": "consistent"
   },
   "devDependencies": {
-    "prettier": "^2.6.2"
+    "eslint": "^8.26.0",
+    "prettier": "^2.7.1"
   }
 }

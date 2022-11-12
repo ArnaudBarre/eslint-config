@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-config",
   "description": "TS-React focused eslint configuration",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "postpublish": "git checkout -- README.md"
   },
   "peerDependencies": {
-    "eslint": "^8"
+    "eslint": "^8.27.0"
   },
   "dependencies": {
     "@arnaud-barre/eslint-plugin-custom": "^1.0.4",
@@ -27,7 +27,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.2.1",
+    "eslint-plugin-react-refresh": "^0.3.0",
     "eslint-plugin-unicorn": "^44.0.2"
   }
 }

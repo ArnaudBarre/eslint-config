@@ -140,7 +140,7 @@ module.exports = {
     "spaced-comment": ["warn", "always", { markers: ["/"] }],
     "unicode-bom": "warn",
     "arrow-body-style": "warn",
-    "no-new-symbol": "warn",
+    "no-new-native-nonconstructor": "warn",
     "no-useless-computed-key": "warn",
     "no-useless-rename": "warn",
     "no-var": "warn",

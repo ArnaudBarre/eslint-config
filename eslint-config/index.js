@@ -123,7 +123,6 @@ module.exports = {
       },
     ],
     "no-multi-assign": "warn",
-    "no-negated-condition": "warn",
     "no-new-object": "warn",
     "no-restricted-syntax": [
       "warn",
@@ -271,6 +270,7 @@ module.exports = {
     "unicorn/no-lonely-if": "warn", // More cases than eslint/no-lonely-if
     "unicorn/no-object-as-default-parameter": "warn",
     "unicorn/no-thenable": "warn",
+    "unicorn/no-typeof-undefined": "warn",
     "unicorn/no-useless-fallback-in-spread": "warn",
     "unicorn/no-useless-length-check": "warn",
     "unicorn/no-useless-promise-resolve-reject": "warn",
@@ -286,6 +286,7 @@ module.exports = {
     "unicorn/prefer-export-from": ["warn", { ignoreUsedVariables: true }],
     "unicorn/prefer-negative-index": "warn",
     "unicorn/prefer-optional-catch-binding": "warn",
+    "unicorn/prefer-set-size": "warn",
     "unicorn/prefer-string-replace-all": "warn",
     "unicorn/prefer-string-slice": "warn",
     "unicorn/prefer-string-trim-start-end": "warn",

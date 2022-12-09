@@ -169,17 +169,12 @@ module.exports = {
     "@typescript-eslint/naming-convention": [
       "warn",
       {
-        selector: "default",
+        selector: "variableLike",
         format: ["camelCase", "PascalCase", "UPPER_CASE"],
         leadingUnderscore: "allow",
         filter: { regex: "^__", match: false },
       },
       { selector: "typeLike", format: ["PascalCase"] },
-      {
-        selector: ["objectLiteralProperty", "typeProperty"],
-        format: null,
-        modifiers: ["requiresQuotes"],
-      },
     ],
     "@typescript-eslint/no-array-constructor": "warn",
     "@typescript-eslint/no-confusing-void-expression": [

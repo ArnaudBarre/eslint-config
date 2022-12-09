@@ -101,7 +101,6 @@ module.exports = {
     "no-useless-concat": "warn",
     "no-useless-escape": "warn",
     "no-useless-return": "warn",
-    "no-void": "warn",
     "prefer-promise-reject-errors": "warn",
     "prefer-regex-literals": "warn",
     "require-unicode-regexp": "warn",
@@ -198,7 +197,10 @@ module.exports = {
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
     "@typescript-eslint/no-require-imports": "warn",
     "@typescript-eslint/no-shadow": ["warn", { builtinGlobals: false }], // globals should be explicitly used
-    "@typescript-eslint/no-unnecessary-condition": "warn",
+    "@typescript-eslint/no-unnecessary-condition": [
+      "warn",
+      { allowConstantLoopConditions: true },
+    ],
     "@typescript-eslint/no-unnecessary-type-arguments": "warn",
     "@typescript-eslint/no-unnecessary-type-assertion": "warn",
     "@typescript-eslint/no-unused-expressions": [

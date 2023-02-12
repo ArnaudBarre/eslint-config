@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-plugin-custom",
   "description": "Custom rules for @arnaud-barre/eslint-config",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "index.js",

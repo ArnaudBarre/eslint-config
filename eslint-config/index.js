@@ -251,6 +251,7 @@ module.exports = {
     "react/jsx-no-useless-fragment": ["warn", { allowExpressions: true }], // TODO: Remove allowExpressions if https://github.com/microsoft/TypeScript/issues/21699 is fixed
     "react/jsx-pascal-case": ["warn", { allowAllCaps: true }],
     "react/no-danger-with-children": "warn",
+    "react/no-unused-prop-types": "warn",
     "react/self-closing-comp": "warn",
     "react/style-prop-object": "warn",
     "react/void-dom-elements-no-children": "warn",

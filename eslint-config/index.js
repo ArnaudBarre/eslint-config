@@ -39,10 +39,7 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: true,
   },
   settings: {
-    "react": { version: "18.2" },
-    "import/resolver": {
-      typescript: { project: ["./tsconfig.json", "./*/tsconfig.json"] },
-    },
+    react: { version: "18.2" },
   },
 
   rules: {
@@ -71,8 +68,6 @@ module.exports = {
     "use-isnan": "warn",
     "array-callback-return": "warn",
     "curly": ["warn", "multi-line", "consistent"],
-    "default-param-last": "warn",
-    "dot-notation": "warn",
     "eqeqeq": "warn",
     "no-alert": "warn",
     "no-caller": "warn",
@@ -83,7 +78,6 @@ module.exports = {
     "no-iterator": "warn",
     "no-labels": "warn",
     "no-lone-blocks": "warn",
-    "no-loop-func": "warn",
     "no-multi-str": "warn",
     "no-new": "warn",
     "no-new-func": "warn",
@@ -91,11 +85,9 @@ module.exports = {
     "no-octal-escape": "warn",
     "no-param-reassign": "warn",
     "no-return-assign": "warn",
-    "no-return-await": "warn",
     "no-script-url": "warn",
     "no-self-assign": "warn",
     "no-self-compare": "warn",
-    "no-throw-literal": "warn",
     "no-useless-call": "warn",
     "no-useless-catch": "warn",
     "no-useless-concat": "warn",
@@ -150,7 +142,32 @@ module.exports = {
     "prefer-template": "warn",
     "require-yield": "warn",
 
-    // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
+    // https://typescript-eslint.io/rules/#extension-rules
+    "@typescript-eslint/default-param-last": "warn",
+    "@typescript-eslint/dot-notation": "warn",
+    "@typescript-eslint/no-array-constructor": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-implied-eval": "warn",
+    "@typescript-eslint/no-loop-func": "warn",
+    "@typescript-eslint/no-loss-of-precision": "warn",
+    "@typescript-eslint/no-redeclare": "warn",
+    "@typescript-eslint/no-shadow": "warn",
+    "@typescript-eslint/no-throw-literal": "warn",
+    "@typescript-eslint/no-unused-expressions": [
+      "warn",
+      {
+        allowShortCircuit: true,
+        allowTernary: true,
+        allowTaggedTemplates: true,
+      },
+    ],
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-useless-constructor": "warn",
+    "@typescript-eslint/require-await": "warn",
+    "@typescript-eslint/return-await": "warn",
+
+    // https://typescript-eslint.io/rules/#supported-rules
+    "@typescript-eslint/adjacent-overload-signatures": "warn",
     "@typescript-eslint/array-type": "warn",
     "@typescript-eslint/await-thenable": "warn",
     "@typescript-eslint/ban-types": [
@@ -163,8 +180,10 @@ module.exports = {
         },
       },
     ],
+    "@typescript-eslint/consistent-generic-constructors": "warn",
     "@typescript-eslint/consistent-type-assertions": "warn",
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+    "@typescript-eslint/method-signature-style": "warn",
     "@typescript-eslint/naming-convention": [
       "warn",
       {
@@ -175,17 +194,17 @@ module.exports = {
       },
       { selector: "typeLike", format: ["PascalCase"] },
     ],
-    "@typescript-eslint/no-array-constructor": "warn",
     "@typescript-eslint/no-confusing-void-expression": [
       "warn",
       { ignoreArrowShorthand: true },
     ],
-    "@typescript-eslint/no-duplicate-imports": "warn",
     "@typescript-eslint/no-dynamic-delete": "warn",
-    "@typescript-eslint/no-empty-function": "warn",
     "@typescript-eslint/no-extra-non-null-assertion": "warn",
+    "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/no-for-in-array": "warn",
     "@typescript-eslint/no-inferrable-types": "warn",
+    "@typescript-eslint/no-invalid-void-type": "warn",
+    "@typescript-eslint/no-meaningless-void-operator": "warn",
     "@typescript-eslint/no-misused-promises": [
       "warn",
       {
@@ -194,33 +213,26 @@ module.exports = {
         checksVoidReturn: { arguments: false, attributes: false },
       },
     ],
+    "@typescript-eslint/no-namespace": "warn",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
+    "@typescript-eslint/no-redundant-type-constituents": "warn",
     "@typescript-eslint/no-require-imports": "warn",
-    "@typescript-eslint/no-shadow": ["warn", { builtinGlobals: false }], // globals should be explicitly used
     "@typescript-eslint/no-unnecessary-condition": [
       "warn",
       { allowConstantLoopConditions: true },
     ],
     "@typescript-eslint/no-unnecessary-type-arguments": "warn",
     "@typescript-eslint/no-unnecessary-type-assertion": "warn",
-    "@typescript-eslint/no-unused-expressions": [
-      "warn",
-      {
-        allowShortCircuit: true,
-        allowTernary: true,
-        allowTaggedTemplates: true,
-      },
-    ],
-    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "@typescript-eslint/no-useless-empty-export": "warn",
-    "@typescript-eslint/no-useless-constructor": "warn",
-    "@typescript-eslint/no-redundant-type-constituents": "warn",
     "@typescript-eslint/non-nullable-type-assertion-style": "warn",
+    "@typescript-eslint/prefer-as-const": "warn",
     "@typescript-eslint/prefer-includes": "warn",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/prefer-reduce-type-parameter": "warn",
+    "@typescript-eslint/prefer-return-this-type": "warn",
     "@typescript-eslint/prefer-string-starts-ends-with": "warn",
-    "@typescript-eslint/require-await": "warn",
+    "@typescript-eslint/prefer-ts-expect-error": "warn",
     "@typescript-eslint/restrict-plus-operands": [
       "warn",
       { checkCompoundAssignments: true },
@@ -229,15 +241,16 @@ module.exports = {
       "warn",
       { allowNumber: true, allowBoolean: true },
     ],
+    "@typescript-eslint/switch-exhaustiveness-check": "warn",
     "@typescript-eslint/unified-signatures": "warn",
 
     // https://github.com/benmosher/eslint-plugin-import#rules
     "import/no-unresolved": ["error", { ignore: ["^virtual:"] }],
+    "import/no-duplicates": "warn",
+    "import/extensions": ["warn", "always", { ignorePackages: true }],
     "import/first": "error",
-    "import/no-amd": "error",
     "import/no-default-export": "warn",
     "import/no-self-import": "error",
-    "import/no-webpack-loader-syntax": "error",
 
     // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
     "react/destructuring-assignment": "warn",
@@ -316,11 +329,15 @@ module.exports = {
     "jsx-a11y/scope": "warn",
 
     // https://github.com/ArnaudBarre/eslint-plugin-react-refresh
-    "react-refresh/only-export-components": "warn",
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
 
     // https://github.com/ArnaudBarre/eslint-config/tree/main/eslint-plugin-custom
     "@arnaud-barre/custom/jsx-no-lonely-template-string": "warn",
     "@arnaud-barre/custom/jsx-no-number-truthiness": "warn",
+    "@arnaud-barre/custom/no-unused-property-signature": "warn",
     "@arnaud-barre/custom/no-useless-template-string": "warn",
     "@arnaud-barre/custom/one-line-if": "warn",
   },

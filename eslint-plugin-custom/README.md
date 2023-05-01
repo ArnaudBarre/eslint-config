@@ -4,5 +4,6 @@ Custom rules for `@arnaud-barre/eslint-config`:
 
 - jsx-no-lonely-template-string: Enforce `` {`Hello ${name}`} `` -> `Hello {name}` in JSX
 - jsx-no-number-truthiness: Disallow `list.length && ...` in JSX
+- no-unused-property-signature: Check for unused option for function using inlined object parameters types
 - no-useless-template-string: Enforce `` `Hello` `` -> `"Hello"`
 - one-line-if: Enforce `if (condition) ...` on one line when possible

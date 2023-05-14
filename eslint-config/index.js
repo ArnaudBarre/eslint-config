@@ -203,7 +203,6 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/no-for-in-array": "warn",
     "@typescript-eslint/no-inferrable-types": "warn",
-    "@typescript-eslint/no-invalid-void-type": "warn",
     "@typescript-eslint/no-meaningless-void-operator": "warn",
     "@typescript-eslint/no-misused-promises": [
       "warn",
@@ -245,7 +244,7 @@ module.exports = {
     "@typescript-eslint/unified-signatures": "warn",
 
     // https://github.com/benmosher/eslint-plugin-import#rules
-    "import/no-unresolved": ["error", { ignore: ["^virtual:", "^bun:"] }],
+    "import/no-unresolved": ["error", { ignore: ["^[^.]"] }],
     "import/no-duplicates": "warn",
     "import/extensions": ["warn", "always", { ignorePackages: true }],
     "import/first": "error",
@@ -349,6 +348,7 @@ module.exports = {
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/method-signature-style": "off",
       },
     },
   ],

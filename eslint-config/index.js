@@ -245,7 +245,7 @@ module.exports = {
     "@typescript-eslint/unified-signatures": "warn",
 
     // https://github.com/benmosher/eslint-plugin-import#rules
-    "import/no-unresolved": ["error", { ignore: ["^virtual:"] }],
+    "import/no-unresolved": ["error", { ignore: ["^virtual:", "^bun:"] }],
     "import/no-duplicates": "warn",
     "import/extensions": ["warn", "always", { ignorePackages: true }],
     "import/first": "error",

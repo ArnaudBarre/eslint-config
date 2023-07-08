@@ -33,10 +33,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-    ecmaFeatures: { jsx: true },
     project: ["./tsconfig.json", "./*/tsconfig.json"],
     tsconfigRootDir: join(__dirname, "../../.."),
-    warnOnUnsupportedTypeScriptVersion: true,
   },
   settings: {
     react: { version: "18.2" },
@@ -260,7 +258,7 @@ module.exports = {
     "react/jsx-no-comment-textnodes": "warn",
     "react/jsx-no-duplicate-props": "warn",
     "react/jsx-no-target-blank": "warn",
-    "react/jsx-no-useless-fragment": ["warn", { allowExpressions: true }], // TODO: Remove allowExpressions if https://github.com/microsoft/TypeScript/issues/21699 is fixed
+    "react/jsx-no-useless-fragment": "warn",
     "react/jsx-pascal-case": ["warn", { allowAllCaps: true }],
     "react/no-danger-with-children": "warn",
     "react/no-unused-prop-types": "warn",

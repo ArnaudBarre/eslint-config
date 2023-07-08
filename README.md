@@ -7,7 +7,7 @@ yarn add --dev eslint @arnaud-barre/eslint-config
 ```
 
 ```js
-// .eslintrc.js
+// .eslintrc.cjs
 module.exports = {
   root: true,
   extends: ["@arnaud-barre"],
@@ -31,8 +31,8 @@ module.exports = {
     "target": "ES2020",
     "useDefineForClassFields": true,
     "jsx": "react-jsx",
-    "module": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

@@ -12,11 +12,10 @@
     "prettier": "prettier --write '**/*.{js,ts,json,md}'"
   },
   "prettier": {
-    "trailingComma": "all",
     "quoteProps": "consistent"
   },
   "devDependencies": {
-    "eslint": "^8.39.0",
-    "prettier": "^2.8.8"
+    "eslint": "^8.44.0",
+    "prettier": "^3.0.0"
   }
 }

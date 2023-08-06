@@ -38,6 +38,7 @@ module.exports = {
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noEmit": true,
 
@@ -67,7 +68,7 @@ exports.rules = {
       schema: [],
     },
     create: (context) => ({
-      WhileStatement: (node) => {
+      WhileStatement(node) {
         context.report({ node, messageId: "error" });
       },
     }),

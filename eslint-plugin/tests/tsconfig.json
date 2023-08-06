@@ -1,0 +1,9 @@
+{
+  "include": [
+    "mock.tsx",
+    "mock2.tsx",
+    "mock-folder/mock3.tsx",
+    "mock-folder/nested/mock4.tsx"
+  ],
+  "compilerOptions": { "jsx": "react-jsx", "strict": true }
+}

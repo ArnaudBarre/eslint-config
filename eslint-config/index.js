@@ -20,13 +20,10 @@ module.exports = {
   ignorePatterns: ["dist", "**/*.js"],
   plugins: [
     "@typescript-eslint",
-    "import",
     "unicorn",
-    "react",
     "react-hooks",
-    "jsx-a11y",
     "react-refresh",
-    "@arnaud-barre/custom",
+    "@arnaud-barre",
     "@arnaud-barre/local",
   ],
   env: { browser: true, node: true },
@@ -141,6 +138,7 @@ module.exports = {
     "require-yield": "warn",
 
     // https://typescript-eslint.io/rules/#extension-rules
+    "@typescript-eslint/class-methods-use-this": "warn",
     "@typescript-eslint/default-param-last": "warn",
     "@typescript-eslint/dot-notation": "warn",
     "@typescript-eslint/no-array-constructor": "warn",
@@ -230,10 +228,7 @@ module.exports = {
     "@typescript-eslint/prefer-return-this-type": "warn",
     "@typescript-eslint/prefer-string-starts-ends-with": "warn",
     "@typescript-eslint/prefer-ts-expect-error": "warn",
-    "@typescript-eslint/restrict-plus-operands": [
-      "warn",
-      { checkCompoundAssignments: true },
-    ],
+    "@typescript-eslint/restrict-plus-operands": "warn",
     "@typescript-eslint/restrict-template-expressions": [
       "warn",
       { allowNumber: true, allowBoolean: true },
@@ -241,39 +236,15 @@ module.exports = {
     "@typescript-eslint/switch-exhaustiveness-check": "warn",
     "@typescript-eslint/unified-signatures": "warn",
 
-    // https://github.com/benmosher/eslint-plugin-import#rules
-    "import/no-unresolved": ["error", { ignore: ["^[^.]"] }],
-    "import/no-duplicates": "warn",
-    "import/extensions": ["warn", "always", { ignorePackages: true }],
-    "import/first": "error",
-    "import/no-default-export": "warn",
-    "import/no-self-import": "error",
-
-    // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
-    "react/destructuring-assignment": "warn",
-    "react/jsx-boolean-value": "warn",
-    "react/jsx-curly-brace-presence": "warn",
-    "react/jsx-fragments": "warn",
-    "react/jsx-key": ["warn", { checkFragmentShorthand: true }],
-    "react/jsx-no-comment-textnodes": "warn",
-    "react/jsx-no-duplicate-props": "warn",
-    "react/jsx-no-target-blank": "warn",
-    "react/jsx-no-useless-fragment": "warn",
-    "react/jsx-pascal-case": ["warn", { allowAllCaps: true }],
-    "react/no-danger-with-children": "warn",
-    "react/no-unused-prop-types": "warn",
-    "react/self-closing-comp": "warn",
-    "react/style-prop-object": "warn",
-    "react/void-dom-elements-no-children": "warn",
-
     // https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn#rules
     "unicorn/consistent-destructuring": "warn",
-    "unicorn/no-array-instanceof": "warn",
+    "unicorn/no-array-for-each": "warn",
     "unicorn/no-for-loop": "warn", // Smarter than eslint/prefer-for-of
+    "unicorn/no-instanceof-array": "warn",
     "unicorn/no-invalid-remove-event-listener": "warn",
     "unicorn/no-lonely-if": "warn", // More cases than eslint/no-lonely-if
     "unicorn/no-object-as-default-parameter": "warn",
@@ -292,6 +263,7 @@ module.exports = {
     "unicorn/prefer-code-point": "warn",
     "unicorn/prefer-default-parameters": "warn",
     "unicorn/prefer-export-from": ["warn", { ignoreUsedVariables: true }],
+    "unicorn/prefer-modern-math-apis": "warn",
     "unicorn/prefer-negative-index": "warn",
     "unicorn/prefer-optional-catch-binding": "warn",
     "unicorn/prefer-set-size": "warn",
@@ -299,31 +271,8 @@ module.exports = {
     "unicorn/prefer-string-slice": "warn",
     "unicorn/prefer-string-trim-start-end": "warn",
     // "unicorn/prefer-ternary": "warn", TODO: enable if https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1079 is fixed
+    "unicorn/prefer-top-level-await": "warn",
     "unicorn/throw-new-error": "warn",
-
-    // https://github.com/evcohen/eslint-plugin-jsx-a11y#supported-rules
-    "jsx-a11y/alt-text": "warn",
-    "jsx-a11y/anchor-has-content": "warn",
-    "jsx-a11y/aria-activedescendant-has-tabindex": "warn",
-    "jsx-a11y/aria-props": "warn",
-    "jsx-a11y/aria-proptypes": "warn",
-    "jsx-a11y/aria-role": ["warn", { ignoreNonDOM: true }],
-    "jsx-a11y/aria-unsupported-elements": "warn",
-    "jsx-a11y/autocomplete-valid": [
-      "warn",
-      { inputComponents: ["Input", "FormInput"] },
-    ],
-    "jsx-a11y/heading-has-content": "warn",
-    "jsx-a11y/iframe-has-title": "warn",
-    "jsx-a11y/img-redundant-alt": "warn",
-    "jsx-a11y/no-access-key": "warn",
-    "jsx-a11y/no-distracting-elements": "warn",
-    "jsx-a11y/no-interactive-element-to-noninteractive-role": "warn",
-    "jsx-a11y/no-noninteractive-tabindex": "warn",
-    "jsx-a11y/no-redundant-roles": "warn",
-    "jsx-a11y/role-has-required-aria-props": "warn",
-    "jsx-a11y/role-supports-aria-props": "warn",
-    "jsx-a11y/scope": "warn",
 
     // https://github.com/ArnaudBarre/eslint-plugin-react-refresh
     "react-refresh/only-export-components": [
@@ -331,12 +280,26 @@ module.exports = {
       { allowConstantExport: true },
     ],
 
-    // https://github.com/ArnaudBarre/eslint-config/tree/main/eslint-plugin-custom
-    "@arnaud-barre/custom/jsx-no-lonely-template-string": "warn",
-    "@arnaud-barre/custom/jsx-no-number-truthiness": "warn",
-    "@arnaud-barre/custom/no-unused-property-signature": "warn",
-    "@arnaud-barre/custom/no-useless-template-string": "warn",
-    "@arnaud-barre/custom/one-line-if": "warn",
+    // https://github.com/ArnaudBarre/eslint-config/tree/main/eslint-plugin
+    "@arnaud-barre/aria": "warn",
+    "@arnaud-barre/autocomplete-valid": "warn",
+    "@arnaud-barre/context-display-name": "warn",
+    "@arnaud-barre/imports": "error",
+    "@arnaud-barre/jsx-boolean-value": "warn",
+    "@arnaud-barre/jsx-fragments": "warn",
+    "@arnaud-barre/jsx-key": "warn",
+    "@arnaud-barre/jsx-no-comment-text-nodes": "warn",
+    "@arnaud-barre/jsx-no-extra-curly-brace": "warn",
+    "@arnaud-barre/jsx-no-lonely-template-string": "warn",
+    "@arnaud-barre/jsx-no-number-truthiness": "warn",
+    "@arnaud-barre/jsx-no-useless-fragment": "warn",
+    "@arnaud-barre/jsx-self-closing": "warn",
+    "@arnaud-barre/no-danger-with-children": "warn",
+    "@arnaud-barre/no-default-export": "warn",
+    "@arnaud-barre/no-unused-property-signature": "warn",
+    "@arnaud-barre/no-useless-template-string": "warn",
+    "@arnaud-barre/one-line-if": "warn",
+    "@arnaud-barre/void-dom-elements-no-children": "warn",
   },
 
   overrides: [

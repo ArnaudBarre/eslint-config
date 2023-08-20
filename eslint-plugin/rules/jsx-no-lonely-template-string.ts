@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import { TSESLint } from "@typescript-eslint/utils";
-import { Cases } from "../tests/types.ts";
+import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
   meta: {

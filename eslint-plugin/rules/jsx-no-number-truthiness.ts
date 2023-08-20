@@ -1,7 +1,7 @@
 // Inspired from https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/rules/restrict-template-expressions.ts
 import { ESLintUtils, TSESLint } from "@typescript-eslint/utils";
-import { Type } from "typescript";
-import { Cases } from "../tests/types.ts";
+import type { Type } from "typescript";
+import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<"error"> = {
   meta: {

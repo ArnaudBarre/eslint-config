@@ -39,7 +39,6 @@ module.exports = {
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
-    "isolatedModules": true,
     "noEmit": true,
 
     /* Linting */

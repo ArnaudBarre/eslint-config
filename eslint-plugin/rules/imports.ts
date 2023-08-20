@@ -1,7 +1,7 @@
 import { TSESLint, TSESTree } from "@typescript-eslint/utils";
 import { join, dirname, relative, isAbsolute } from "path";
 import { existsSync } from "fs";
-import { Cases } from "../tests/types.ts";
+import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<
   | "selfImport"

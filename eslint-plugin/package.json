@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@arnaud-barre/eslint-config": "^3.0.3",
-    "@arnaud-barre/prettier-plugin-sort-imports": "^0.1.1",
-    "@arnaud-barre/tnode": "^0.18.0",
-    "@types/node": "^18.16.19",
+    "@arnaud-barre/prettier-plugin-sort-imports": "^0.1.2",
+    "@arnaud-barre/tnode": "^0.19.1",
+    "@types/node": "^18.17.5",
     "@typescript-eslint/rule-tester": "^6.0.0",
     "eslint": "^8.47.0",
     "typescript": "^5.1.6"

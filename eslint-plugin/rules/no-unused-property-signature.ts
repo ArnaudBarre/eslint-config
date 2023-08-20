@@ -2,7 +2,7 @@
 // Most cases are already covered by react/no-unused-prop-types, but this rule
 // also check for non React functions and add fix via suggestion
 import { TSESLint, TSESTree } from "@typescript-eslint/utils";
-import { Cases } from "../tests/types.ts";
+import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
   meta: {

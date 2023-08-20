@@ -1,5 +1,5 @@
 import { TSESLint } from "@typescript-eslint/utils";
-import { Cases } from "../tests/types.ts";
+import type { Cases } from "../tests/types.ts";
 
 const voidElements = new Set([
   "area",

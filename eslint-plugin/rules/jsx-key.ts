@@ -1,5 +1,5 @@
 import { TSESLint, TSESTree } from "@typescript-eslint/utils";
-import { Cases } from "../tests/types.ts";
+import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<"missingKey" | "keyFirst"> = {
   meta: {

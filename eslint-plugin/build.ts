@@ -21,7 +21,7 @@ await build({
   platform: "node",
   target: "node18",
   format: "cjs",
-  packages: "external",
+  external: Object.keys(packageJSON.dependencies),
 });
 execSync("cp LICENSE README.md dist/");
 

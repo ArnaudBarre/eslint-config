@@ -1,10 +1,12 @@
-import { parseRegExpLiteral } from "@eslint-community/regexpp";
+import { parseRegExpLiteral, visitRegExpAST } from "@eslint-community/regexpp";
 import { TSESLint } from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
 const messages = {
   invalid: "Invalid RegExp",
   useLiteral: "Change to literal RegExp",
+  confusingQuantifier:
+    "This quantifier is confusing because its minimum is {{min}} but it can match the empty string. Maybe replace it with `{{proposal}}` to reflect that it can match the empty string?",
 };
 
 export const rule: TSESLint.RuleModule<keyof typeof messages> = {
@@ -72,7 +74,22 @@ const validateRegExp = (
   | { id: keyof typeof messages; data?: Record<string, string>; index?: number }
   | undefined => {
   try {
-    parseRegExpLiteral(value, { strict: true, ecmaVersion: 2023 });
+    const ast = parseRegExpLiteral(value, { strict: true, ecmaVersion: 2023 });
+
+    visitRegExpAST(ast, {
+      onQuantifierEnter(qNode) {
+        if (qNode.min > 0 && isPotentiallyEmpty(qNode.element, value.flags)) {
+          const proposal = quantToString({ ...qNode, min: 0 });
+          return {
+            messageId: "confusingQuantifier",
+            index: getRegexpLocation(qNode, getQuantifierOffsets(qNode)),
+            data: { min: `${qNode.min}`, proposal },
+          };
+        }
+      },
+    });
+
+    console.log(ast.pattern.alternatives);
   } catch (e) {
     // https://github.com/eslint-community/regexpp/pull/144
     if (e instanceof SyntaxError) {

@@ -9,13 +9,17 @@
   ],
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "scripts": {
-    "prettier": "prettier --write '**/*.{js,ts,json,md}'"
+    "prettier": "prettier --write '**/*.{js,cjs,ts,json,md}'"
   },
   "prettier": {
-    "quoteProps": "consistent"
+    "quoteProps": "consistent",
+    "plugins": [
+      "@arnaud-barre/prettier-plugin-sort-imports"
+    ]
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
-    "prettier": "^3.0.0"
+    "@arnaud-barre/prettier-plugin-sort-imports": "^0.1.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3"
   }
 }

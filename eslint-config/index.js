@@ -109,7 +109,7 @@ module.exports = {
       },
     ],
     "no-multi-assign": "warn",
-    "no-new-object": "warn",
+    "no-object-constructor": "warn",
     "no-restricted-syntax": [
       "warn",
       "WithStatement",
@@ -134,7 +134,6 @@ module.exports = {
     "prefer-const": "warn",
     "prefer-rest-params": "warn",
     "prefer-spread": "warn",
-    "prefer-template": "warn",
     "require-yield": "warn",
 
     // https://typescript-eslint.io/rules/#extension-rules
@@ -147,6 +146,26 @@ module.exports = {
     "@typescript-eslint/no-loop-func": "warn",
     "@typescript-eslint/no-loss-of-precision": "warn",
     "@typescript-eslint/no-redeclare": "warn",
+    "@typescript-eslint/no-restricted-imports": [
+      "warn",
+      {
+        name: "buffer",
+        importNames: ["Buffer"],
+        message: "Use global instead",
+      },
+      { name: "process", message: "Use global instead" },
+      { name: "console", message: "Use global instead" },
+      {
+        name: "util",
+        importNames: ["TextEncoder", "TextDecoder"],
+        message: "Use global instead",
+      },
+      {
+        name: "url",
+        importNames: ["URL", "URLSearchParams"],
+        message: "Use global instead",
+      },
+    ],
     "@typescript-eslint/no-shadow": "warn",
     "@typescript-eslint/no-throw-literal": "warn",
     "@typescript-eslint/no-unused-expressions": [
@@ -231,7 +250,7 @@ module.exports = {
     "@typescript-eslint/restrict-plus-operands": "warn",
     "@typescript-eslint/restrict-template-expressions": [
       "warn",
-      { allowNumber: true, allowBoolean: true },
+      { allowNumber: true },
     ],
     "@typescript-eslint/switch-exhaustiveness-check": "warn",
     "@typescript-eslint/unified-signatures": "warn",

@@ -9,7 +9,7 @@ const files = readdirSync("rules");
 
 const lines = [
   ...files.map((f, i) => `import { rule as rule${i} } from "./rules/${f}";`),
-  "export const rules = {",
+  "module.exports.rules = {",
   ...files.map((f, i) => `  "${f.slice(0, -3)}": rule${i},`),
   "};",
 ];

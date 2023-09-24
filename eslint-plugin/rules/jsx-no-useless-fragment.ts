@@ -24,7 +24,7 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
       if (
         nonPaddingChildren.length < 2 &&
         // Exclude this valid use '<Foo content={<>bar</>} />'
-        // Could be replaced by string prop but plays better nice with Prettier for lon lines
+        // Could be replaced by string prop but plays better nice with Prettier for long lines
         !(
           node.children.length === 1 &&
           node.children[0].type === "JSXText" &&
@@ -34,7 +34,11 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
           )
         )
       ) {
-        context.report({ messageId: "error", node, suggest: getFix(node) });
+        context.report({
+          messageId: "error",
+          node,
+          suggest: getFix(node, nonPaddingChildren),
+        });
         return;
       }
 
@@ -43,11 +47,18 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
         node.parent.openingElement.name.type === "JSXIdentifier" &&
         domElementRE.test(node.parent.openingElement.name.name)
       ) {
-        context.report({ messageId: "error", node, suggest: getFix(node) });
+        context.report({
+          messageId: "error",
+          node,
+          suggest: getFix(node, nonPaddingChildren),
+        });
       }
     };
 
-    const getFix = (node: TSESTree.JSXFragment | TSESTree.JSXElement) => {
+    const getFix = (
+      node: TSESTree.JSXFragment | TSESTree.JSXElement,
+      nonPaddingChildren: TSESTree.JSXChild[],
+    ) => {
       const outsideJSX =
         node.parent.type !== "JSXElement" && node.parent.type !== "JSXFragment";
       if (outsideJSX && node.children.length === 0) {
@@ -67,20 +78,15 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
 
         if (!closer) return fixer.remove(node);
 
+        const child = nonPaddingChildren.at(0);
         if (
           outsideJSX &&
-          (node.children[0].type === "JSXExpressionContainer" ||
-            node.children[0].type === "JSXSpreadChild")
+          (child?.type === "JSXExpressionContainer" ||
+            child?.type === "JSXSpreadChild")
         ) {
           return [
-            fixer.removeRange([
-              opener.range[0],
-              node.children[0].expression.range[0],
-            ]),
-            fixer.removeRange([
-              node.children[0].expression.range[1],
-              closer.range[1],
-            ]),
+            fixer.removeRange([opener.range[0], child.expression.range[0]]),
+            fixer.removeRange([child.expression.range[1], closer.range[1]]),
           ];
         }
 
@@ -192,6 +198,27 @@ export const cases: Cases = {
       code: "return <Foo><>{array.map(foo => <Bar key={foo.id} foo={foo} />)}</></Foo>",
       suggestionOutput:
         "return <Foo>{array.map(foo => <Bar key={foo.id} foo={foo} />)}</Foo>",
+    },
+    {
+      name: "Expression inside JSX",
+      code: `
+<Foo>
+  {bool && (
+    <>
+      {array.map((foo) => (
+        <Bar key={foo.id} foo={foo} />
+      ))}
+    </>
+  )}
+</Foo>`,
+      suggestionOutput: `
+<Foo>
+  {bool && (
+    array.map((foo) => (
+        <Bar key={foo.id} foo={foo} />
+      ))
+  )}
+</Foo>`,
     },
     {
       name: "JSXExpressionContainer child outside JSX",

@@ -1,6 +1,6 @@
+import { existsSync } from "node:fs";
+import { dirname, isAbsolute, join, relative } from "node:path";
 import { TSESLint, TSESTree } from "@typescript-eslint/utils";
-import { join, dirname, relative, isAbsolute } from "path";
-import { existsSync } from "fs";
 import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<
@@ -57,13 +57,17 @@ export const rule: TSESLint.RuleModule<
       ImportDeclaration(node) {
         if (node.parent.type === "TSModuleBlock") return;
         if (!topLevelImports.has(node)) {
-          console.log(node.parent.type);
           context.report({ messageId: "first", node });
           return;
         }
 
-        const value = node.source.value;
-        if (!value.startsWith(".")) return;
+        const rawValue = node.source.value;
+        if (!rawValue.startsWith(".")) return;
+        const queryStringIndex = rawValue.indexOf("?");
+        const value =
+          queryStringIndex === -1
+            ? rawValue
+            : rawValue.slice(0, queryStringIndex);
 
         if (!value.split("/").pop()!.includes(".")) {
           context.report({ messageId: "unresolved", node });
@@ -115,6 +119,10 @@ export const cases: Cases = {
     {
       name: "Explicit import",
       code: "import './mock2.tsx';",
+    },
+    {
+      name: "With query string",
+      code: "import './mock2.tsx?raw';",
     },
     {
       name: "Dynamic import",

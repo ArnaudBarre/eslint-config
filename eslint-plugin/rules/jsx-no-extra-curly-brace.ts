@@ -15,6 +15,7 @@ export const rule: TSESLint.RuleModule<"error"> = {
         node.expression.type === "Literal" &&
         typeof node.expression.value === "string"
       ) {
+        if (node.expression.raw.toString().includes("\\")) return;
         if (node.parent.type === "JSXAttribute") {
           context.report({
             node,
@@ -24,7 +25,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
               fixer.removeRange([node.range[1] - 1, node.range[1]]),
             ],
           });
-        } else if (node.expression.value.trim() === node.expression.value) {
+        } else {
+          if (needJSXEscape.test(node.expression.value)) return;
+          if (context.getSourceCode().getCommentsInside(node).length) return;
           context.report({
             node,
             messageId: "error",
@@ -52,24 +55,51 @@ export const rule: TSESLint.RuleModule<"error"> = {
   }),
 };
 
+// Trailing whitespaces or HTML entities or backslash or JSX disallow characters
+const needJSXEscape = /^\s|\s$|(&[A-Za-z\d#]+;)|[{<>}]/u;
+
 export const cases: Cases = {
   valid: [
     {
       name: "Literal value",
-      code: 'const foo = <Comp bar="baz" />',
+      code: '<Comp bar="baz" />',
     },
     {
       name: "Template string",
       // eslint-disable-next-line no-template-curly-in-string
-      code: "const foo = <Comp bar={`foo ${baz}`} />",
+      code: "<Comp bar={`foo ${baz}`} />",
     },
     {
-      name: "Node with trailing space",
-      code: 'const foo = <Comp>{" bar"}</Comp>',
+      name: "Node with trailing space start",
+      code: '<Comp>{" bar"}</Comp>',
+    },
+    {
+      name: "Node with trailing space end",
+      code: '<Comp>{"bar "}</Comp>',
     },
     {
       name: "JSX in attribute value",
-      code: "const foo = <Comp bar={<div />} />",
+      code: "<Comp bar={<div />} />",
+    },
+    {
+      name: "Attribute with escape",
+      code: '<Comp bar={"line\\nbreak"} />',
+    },
+    {
+      name: "Node with HTML entity",
+      code: '<Comp>{"&nbsp;"}</Comp>',
+    },
+    {
+      name: "Node with disallow JSX char",
+      code: '<style>{".div { margin: 0 }"}</style>',
+    },
+    {
+      name: "Node with escape",
+      code: '<Comp>{"line\\nbreak"}</Comp>',
+    },
+    {
+      name: "Node with comment",
+      code: '<Comp>{/* comment */ "foo"}</Comp>',
     },
   ],
   invalid: [

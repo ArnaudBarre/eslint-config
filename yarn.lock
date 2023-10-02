@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@arnaud-barre/eslint-plugin@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@arnaud-barre/eslint-plugin/-/eslint-plugin-1.2.5.tgz#19192efd45a2726816dde1ca74e814eef86513ea"
-  integrity sha512-fIeQcqRSk1qJo5vOGX2DxS0s0Xf5HTS+4sFYnw1XYR+/1ZUjqAFChGtsyFGLrKrnDKZygnKuDS90Pej8JnA8mg==
+"@arnaud-barre/eslint-plugin@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@arnaud-barre/eslint-plugin/-/eslint-plugin-1.2.6.tgz#2055da7ad00ccba4ce912b32a0b965e165ee6e89"
+  integrity sha512-67HbY+KlwPrKcbsi39Z0TkF6crvq99rAb7k19qIsFJPgQGBZIl0vDLgV4nHPHc4T9P3H62Catc8F4H5Lpd7fTA==
   dependencies:
     "@eslint-community/regexpp" "^4.6.1"
     "@typescript-eslint/utils" "^6.7.2"

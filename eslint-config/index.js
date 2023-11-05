@@ -66,7 +66,6 @@ module.exports = {
     "eqeqeq": "warn",
     "no-alert": "warn",
     "no-caller": "warn",
-    "no-else-return": "warn",
     "no-empty-pattern": "warn",
     "no-eval": "warn",
     "no-global-assign": "warn",
@@ -250,7 +249,12 @@ module.exports = {
     "@typescript-eslint/restrict-plus-operands": "warn",
     "@typescript-eslint/restrict-template-expressions": [
       "warn",
-      { allowNumber: true },
+      {
+        allowAny: false,
+        allowBoolean: false,
+        allowNullish: false,
+        allowRegExp: false,
+      },
     ],
     "@typescript-eslint/switch-exhaustiveness-check": "warn",
     "@typescript-eslint/unified-signatures": "warn",

@@ -20,10 +20,10 @@
   resolved "https://registry.yarnpkg.com/@arnaud-barre/prettier-plugin-sort-imports/-/prettier-plugin-sort-imports-0.1.2.tgz#014bf592779f47545444d42325f09dd3bba9d83a"
   integrity sha512-0l0RaEYQxQSjyOTsFQPcfyjnUcoFAbl+pxWvyJP7bTkBZEXBEnTTEqJLdRVSesxiJUxtTd4Zo9hVSobf6YcnbQ==
 
-"@arnaud-barre/tnode@^0.19.1":
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/@arnaud-barre/tnode/-/tnode-0.19.1.tgz#1a1057e2edc582d3b06e0d24f711db0d758f7304"
-  integrity sha512-QehhdJ7mHvDCjjNcb/Bp/COA95mtmD/nF+nhY19vB2sZLRX8HtmzNvXd4tYvHh96IrmYttMSc+Dq5xIO/vf9Kw==
+"@arnaud-barre/tnode@^0.19.2":
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/@arnaud-barre/tnode/-/tnode-0.19.2.tgz#281be1254c64e3725e5407c6e88a229c178d82ea"
+  integrity sha512-YctrCVB4J7nC5JwfRArdDvC+/Y9oc+DBOZmdOkovYIAwzCiyfP/q+q1hXtndKl2SMWkhLLj0LWJGmax1OKOFxw==
   dependencies:
     esbuild "^0.19"
 

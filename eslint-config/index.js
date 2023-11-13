@@ -145,28 +145,9 @@ module.exports = {
     "@typescript-eslint/no-loop-func": "warn",
     "@typescript-eslint/no-loss-of-precision": "warn",
     "@typescript-eslint/no-redeclare": "warn",
-    "@typescript-eslint/no-restricted-imports": [
-      "warn",
-      {
-        name: "buffer",
-        importNames: ["Buffer"],
-        message: "Use global instead",
-      },
-      { name: "process", message: "Use global instead" },
-      { name: "console", message: "Use global instead" },
-      {
-        name: "util",
-        importNames: ["TextEncoder", "TextDecoder"],
-        message: "Use global instead",
-      },
-      {
-        name: "url",
-        importNames: ["URL", "URLSearchParams"],
-        message: "Use global instead",
-      },
-    ],
     "@typescript-eslint/no-shadow": "warn",
     "@typescript-eslint/no-throw-literal": "warn",
+    "@typescript-eslint/no-unsafe-unary-minus": "warn",
     "@typescript-eslint/no-unused-expressions": [
       "warn",
       {
@@ -321,6 +302,7 @@ module.exports = {
     "@arnaud-barre/no-default-export": "warn",
     "@arnaud-barre/no-unused-property-signature": "warn",
     "@arnaud-barre/no-useless-template-string": "warn",
+    "@arnaud-barre/node-globals": "warn",
     "@arnaud-barre/one-line-if": "warn",
     "@arnaud-barre/void-dom-elements-no-children": "warn",
   },

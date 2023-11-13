@@ -1,4 +1,7 @@
-import { parseRegExpLiteral } from "@eslint-community/regexpp";
+import {
+  parseRegExpLiteral,
+  RegExpSyntaxError,
+} from "@eslint-community/regexpp";
 import { TSESLint } from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
@@ -74,9 +77,7 @@ const validateRegExp = (
   try {
     parseRegExpLiteral(value, { strict: true, ecmaVersion: 2023 });
   } catch (e) {
-    // https://github.com/eslint-community/regexpp/pull/144
-    if (e instanceof SyntaxError) {
-      // @ts-expect-error
+    if (e instanceof RegExpSyntaxError) {
       return { id: "invalid", index: e.index };
     }
     throw e;

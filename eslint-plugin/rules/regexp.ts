@@ -2,7 +2,7 @@ import {
   parseRegExpLiteral,
   RegExpSyntaxError,
 } from "@eslint-community/regexpp";
-import { TSESLint } from "@typescript-eslint/utils";
+import type { TSESLint } from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
 const messages = {

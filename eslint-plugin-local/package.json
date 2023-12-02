@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-plugin-local",
   "description": "Add local rules support for @arnaud-barre/eslint-config",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "index.js",

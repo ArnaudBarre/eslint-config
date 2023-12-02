@@ -17,7 +17,7 @@ module.exports = {
 ```json
 // package.json
 "scripts": {
-  "lint": "yarn lint-ci --fix --cache",
+  "lint": "bun lint-ci --fix --cache",
   "lint-ci": "eslint ./ --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
 }
 ```
@@ -28,7 +28,7 @@ module.exports = {
 {
   "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2021",
     "useDefineForClassFields": true,
     "jsx": "react-jsx",
     "module": "ESNext",
@@ -55,10 +55,10 @@ module.exports = {
 
 ## Adding local rules
 
-Local rules are loaded from `eslint-plugin/index.js`. Here is an example for an hypothetical "no-while" rule (that could simply be achieved by using the [no-restricted-syntax rule](https://eslint.org/docs/latest/rules/no-restricted-syntax))
+Local rules are loaded from `eslint-plugin/index.cjs`. Here is an example for an hypothetical "no-while" rule (that could simply be achieved by using the [no-restricted-syntax rule](https://eslint.org/docs/latest/rules/no-restricted-syntax))
 
 ```js
-// eslint-plugin/index.js
+// eslint-plugin/index.cjs
 exports.rules = {
   "no-while": {
     meta: {
@@ -76,7 +76,7 @@ exports.rules = {
 ```
 
 ```js
-//  .eslintrc.js
+//  .eslintrc.cjs
 module.exports = {
   root: true,
   extends: ["@arnaud-barre"],

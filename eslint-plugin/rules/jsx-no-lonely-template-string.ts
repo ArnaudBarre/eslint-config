@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import { TSESLint } from "@typescript-eslint/utils";
+import type { TSESLint } from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
 export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {

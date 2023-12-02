@@ -1,4 +1,4 @@
-import { TSESLint } from "@typescript-eslint/utils";
+import type { TSESLint } from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
 const voidElements = new Set([

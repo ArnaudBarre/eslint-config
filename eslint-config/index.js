@@ -178,6 +178,7 @@ module.exports = {
     "@typescript-eslint/consistent-generic-constructors": "warn",
     "@typescript-eslint/consistent-type-assertions": "warn",
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+    "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/method-signature-style": "warn",
     "@typescript-eslint/naming-convention": [
       "warn",
@@ -237,7 +238,10 @@ module.exports = {
         allowRegExp: false,
       },
     ],
-    "@typescript-eslint/switch-exhaustiveness-check": "warn",
+    "@typescript-eslint/switch-exhaustiveness-check": [
+      "warn",
+      { requireDefaultForNonUnion: true },
+    ],
     "@typescript-eslint/unified-signatures": "warn",
 
     // https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
@@ -300,6 +304,7 @@ module.exports = {
     "@arnaud-barre/jsx-self-closing": "warn",
     "@arnaud-barre/no-danger-with-children": "warn",
     "@arnaud-barre/no-default-export": "warn",
+    "@arnaud-barre/no-jsx-element": "warn",
     "@arnaud-barre/no-unused-property-signature": "warn",
     "@arnaud-barre/no-useless-template-string": "warn",
     "@arnaud-barre/node-globals": "warn",

@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-plugin-dev",
   "private": true,
-  "version": "1.2.8",
+  "version": "1.2.9",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -14,14 +14,14 @@
   },
   "dependencies": {
     "@eslint-community/regexpp": "^4.10.0",
-    "@typescript-eslint/utils": "^6.11.0"
+    "@typescript-eslint/utils": "^6.13.1"
   },
   "devDependencies": {
-    "@arnaud-barre/eslint-config": "^3.1.5",
+    "@arnaud-barre/eslint-config": "^4.0.0",
     "@arnaud-barre/tnode": "^0.19.2",
     "@types/node": "^20.9.0",
-    "@typescript-eslint/rule-tester": "^6.11.0",
-    "eslint": "^8.53.0",
-    "typescript": "^5.2.2"
+    "@typescript-eslint/rule-tester": "^6.13.1",
+    "eslint": "^8.55.0",
+    "typescript": "~5.3"
   }
 }

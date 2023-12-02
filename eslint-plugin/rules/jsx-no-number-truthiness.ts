@@ -1,5 +1,5 @@
 // Inspired from https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/rules/restrict-template-expressions.ts
-import { ESLintUtils, TSESLint } from "@typescript-eslint/utils";
+import { ESLintUtils, type TSESLint } from "@typescript-eslint/utils";
 import type { Type } from "typescript";
 import type { Cases } from "../tests/types.ts";
 

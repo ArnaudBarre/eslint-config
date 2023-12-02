@@ -18,8 +18,8 @@
     ]
   },
   "devDependencies": {
-    "@arnaud-barre/prettier-plugin-sort-imports": "^0.1.2",
-    "eslint": "^8.50.0",
-    "prettier": "^3.0.3"
+    "@arnaud-barre/prettier-plugin-sort-imports": "^0.1.3",
+    "eslint": "^8.55.0",
+    "prettier": "3.0.3"
   }
 }

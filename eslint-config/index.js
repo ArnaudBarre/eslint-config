@@ -178,7 +178,10 @@ module.exports = {
     "@typescript-eslint/consistent-generic-constructors": "warn",
     "@typescript-eslint/consistent-type-assertions": "warn",
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-    "@typescript-eslint/consistent-type-imports": "warn",
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      { fixStyle: "inline-type-imports" },
+    ],
     "@typescript-eslint/method-signature-style": "warn",
     "@typescript-eslint/naming-convention": [
       "warn",

@@ -243,7 +243,10 @@ module.exports = {
     ],
     "@typescript-eslint/switch-exhaustiveness-check": [
       "warn",
-      { requireDefaultForNonUnion: true },
+      {
+        requireDefaultForNonUnion: true,
+        allowDefaultCaseForExhaustiveSwitch: false,
+      },
     ],
     "@typescript-eslint/unified-signatures": "warn",
 

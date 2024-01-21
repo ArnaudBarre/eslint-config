@@ -20,8 +20,8 @@
   "dependencies": {
     "@arnaud-barre/eslint-plugin": "^1.2.9",
     "@arnaud-barre/eslint-plugin-local": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "confusing-browser-globals": "^1.0.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",

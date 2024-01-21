@@ -87,7 +87,6 @@ module.exports = {
     "no-useless-concat": "warn",
     "no-useless-escape": "warn",
     "no-useless-return": "warn",
-    "prefer-promise-reject-errors": "warn",
     "prefer-regex-literals": "warn",
     "require-unicode-regexp": "warn",
     "wrap-iife": "warn",
@@ -193,6 +192,7 @@ module.exports = {
       },
       { selector: "typeLike", format: ["PascalCase"] },
     ],
+    "@typescript-eslint/no-array-delete": "warn",
     "@typescript-eslint/no-confusing-void-expression": [
       "warn",
       { ignoreArrowShorthand: true },
@@ -227,6 +227,7 @@ module.exports = {
     "@typescript-eslint/prefer-includes": "warn",
     "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/prefer-promise-reject-errors": "warn",
     "@typescript-eslint/prefer-reduce-type-parameter": "warn",
     "@typescript-eslint/prefer-return-this-type": "warn",
     "@typescript-eslint/prefer-string-starts-ends-with": "warn",

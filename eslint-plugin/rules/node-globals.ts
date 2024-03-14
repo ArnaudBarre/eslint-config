@@ -40,6 +40,8 @@ export const rule: TSESLint.RuleModule<"error"> = {
           case "node:url":
             reportSpecifiers(node, ["URL", "URLSearchParams"]);
             break;
+          default:
+            break;
         }
       },
     };

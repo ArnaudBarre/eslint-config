@@ -145,7 +145,6 @@ module.exports = {
     "@typescript-eslint/no-loss-of-precision": "warn",
     "@typescript-eslint/no-redeclare": "warn",
     "@typescript-eslint/no-shadow": "warn",
-    "@typescript-eslint/no-throw-literal": "warn",
     "@typescript-eslint/no-unsafe-unary-minus": "warn",
     "@typescript-eslint/no-unused-expressions": [
       "warn",
@@ -157,6 +156,7 @@ module.exports = {
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "@typescript-eslint/no-useless-constructor": "warn",
+    "@typescript-eslint/only-throw-error": "warn",
     "@typescript-eslint/require-await": "warn",
     "@typescript-eslint/return-await": "warn",
 
@@ -237,15 +237,16 @@ module.exports = {
       "warn",
       {
         allowAny: false,
+        allowArray: false,
         allowBoolean: false,
         allowNullish: false,
         allowRegExp: false,
+        allowNever: false,
       },
     ],
     "@typescript-eslint/switch-exhaustiveness-check": [
       "warn",
       {
-        requireDefaultForNonUnion: true,
         allowDefaultCaseForExhaustiveSwitch: false,
       },
     ],

@@ -29,7 +29,7 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
           {
             messageId: "suggestion",
             fix(fixer) {
-              const code = context.getSourceCode().getText(node);
+              const code = context.sourceCode.getText(node);
               return fixer.replaceTextRange(
                 node.range,
                 code

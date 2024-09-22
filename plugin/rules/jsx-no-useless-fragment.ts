@@ -90,8 +90,7 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
           ];
         }
 
-        const childrenText = context
-          .getSourceCode()
+        const childrenText = context.sourceCode
           .getText()
           .slice(opener.range[1], closer.range[0]);
 

@@ -1,5 +1,3 @@
-# eslint-plugin [![npm](https://img.shields.io/npm/v/@arnaud-barre/eslint-plugin)](https://www.npmjs.com/package/@arnaud-barre/eslint-plugin)
-
 ## Rules to replace [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
 
 - context-display-name: Enforce displayName for React contexts

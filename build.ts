@@ -5,22 +5,27 @@ import packageJSON from "./package.json";
 
 rmSync("dist", { force: true, recursive: true });
 
-const files = readdirSync("rules");
+const files = readdirSync("plugin/rules");
 
 const lines = [
+  "// Generated via build command",
   ...files.map((f, i) => `import { rule as rule${i} } from "./rules/${f}";`),
-  "module.exports.rules = {",
+  "",
+  "export const rules = {",
   ...files.map((f, i) => `  "${f.slice(0, -3)}": rule${i},`),
   "};",
+  "",
 ];
+
+writeFileSync("plugin/index.ts", lines.join("\n"));
 
 await build({
   bundle: true,
-  stdin: { contents: lines.join("\n"), resolveDir: "." },
+  entryPoints: ["index.ts"],
   outfile: "dist/index.js",
   platform: "node",
   target: "node18",
-  format: "cjs",
+  format: "esm",
   packages: "external",
 });
 execSync("cp LICENSE README.md dist/");
@@ -29,13 +34,15 @@ writeFileSync(
   "dist/package.json",
   JSON.stringify(
     {
-      name: "@arnaud-barre/eslint-plugin",
-      description: "Additional rules for @arnaud-barre/eslint-config",
+      name: packageJSON.name,
+      description: packageJSON.description,
       version: packageJSON.version,
-      author: "Arnaud Barré (https://github.com/ArnaudBarre)",
+      author: packageJSON.author,
       license: packageJSON.license,
       repository: "github:ArnaudBarre/eslint-config",
+      type: "module",
       main: "index.js",
+      peerDependencies: packageJSON.peerDependencies,
       dependencies: packageJSON.dependencies,
     },
     null,

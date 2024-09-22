@@ -28,9 +28,8 @@ export const rule: TSESLint.RuleModule<
   },
   defaultOptions: [],
   create: (context) => {
-    const path = context.getFilename();
-    if (!isAbsolute(path)) {
-      throw new Error("context.getFilename is not absolute");
+    if (!isAbsolute(context.filename)) {
+      throw new Error("context.filename is not absolute");
     }
     const { tsconfigRootDir } = context.parserOptions;
     if (!tsconfigRootDir) throw new Error("tsconfigRootDir not set");
@@ -74,13 +73,13 @@ export const rule: TSESLint.RuleModule<
           return;
         }
 
-        const filename = path.split("/").pop()!;
+        const filename = context.filename.split("/").pop()!;
         if (value === `./${filename}`) {
           context.report({ messageId: "selfImport", node });
           return;
         }
 
-        const importerDir = dirname(path);
+        const importerDir = dirname(context.filename);
         const importedPath = join(importerDir, value);
         let expected = relative(importerDir, importedPath);
         if (countParents(value) > countParents(expected)) {
@@ -175,7 +174,8 @@ declare module "*.svg" {
     },
     {
       name: "Useless path segments parent",
-      code: "import '../../eslint-plugin/mock2.tsx';",
+      code: "import '../../tests/mock2.tsx';",
+      fileName: "mock-folder/mock3.tsx",
       errorId: "uselessPathSegments",
       suggestionOutput: "import '../mock2.tsx';",
     },

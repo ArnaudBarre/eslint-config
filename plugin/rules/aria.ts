@@ -91,7 +91,6 @@ export const rule: TSESLint.RuleModule<
       if (
         node.name.type === "JSXIdentifier" &&
         node.name.name === "role" &&
-        node.parent.type === "JSXOpeningElement" &&
         node.parent.name.type === "JSXIdentifier" &&
         node.parent.name.name in dom
       ) {

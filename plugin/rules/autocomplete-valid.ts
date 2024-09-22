@@ -13,7 +13,6 @@ export const rule: TSESLint.RuleModule<"error"> = {
       if (
         node.name.type === "JSXIdentifier" &&
         node.name.name === "autoComplete" &&
-        node.parent.type === "JSXOpeningElement" &&
         node.parent.name.type === "JSXIdentifier" &&
         node.parent.name.name.toLowerCase().includes("input") &&
         (!node.value ||

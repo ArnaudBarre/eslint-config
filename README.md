@@ -7,22 +7,21 @@ yarn add --dev eslint @arnaud-barre/eslint-config
 ```
 
 ```js
-// .eslintrc.cjs
-module.exports = {
-  root: true,
-  extends: ["@arnaud-barre"],
-};
+// eslint.config.js
+import baseConfig from "@arnaud-barre/eslint-config";
+
+export default [...baseConfig];
 ```
 
 ```json
 // package.json
 "scripts": {
   "lint": "bun lint-ci --fix --cache",
-  "lint-ci": "eslint ./ --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  "lint-ci": "eslint . --max-warnings 0"
 }
 ```
 
-## TS config
+## TS config (5.5)
 
 ```json
 {
@@ -69,33 +68,39 @@ module.exports = {
 
 ## Adding local rules
 
-Local rules are loaded from `eslint-plugin/index.cjs`. Here is an example for an hypothetical "no-while" rule (that could simply be achieved by using the [no-restricted-syntax rule](https://eslint.org/docs/latest/rules/no-restricted-syntax))
+Here is an example for an hypothetical "no-while" rule (that could simply be achieved by using the [no-restricted-syntax rule](https://eslint.org/docs/latest/rules/no-restricted-syntax))
 
 ```js
-// eslint-plugin/index.cjs
-exports.rules = {
-  "no-while": {
-    meta: {
-      messages: { error: "Don't use while" },
-      type: "problem",
-      schema: [],
+// eslint.config.js
+import baseConfig from "@arnaud-barre/eslint-config";
+import tseslint from "typescript-eslint";
+
+/**
+ * @type {import("@typescript-eslint/utils").TSESLint.RuleModule<"error">}
+ */
+const noWhileRule = {
+  meta: {
+    messages: { error: "Don't use while" },
+    type: "problem",
+    schema: [],
+  },
+  create: (context) => ({
+    WhileStatement(node) {
+      context.report({ node, messageId: "error" });
     },
-    create: (context) => ({
-      WhileStatement(node) {
-        context.report({ node, messageId: "error" });
-      },
-    }),
-  },
+  }),
 };
-```
 
-```js
-//  .eslintrc.cjs
-module.exports = {
-  root: true,
-  extends: ["@arnaud-barre"],
-  rules: {
-    "@arnaud-barre/local/no-while": "warn",
+export default tseslint.config(...baseConfig, {
+  plugins: {
+    local: {
+      rules: {
+        "no-while": noWhileRule,
+      },
+    },
   },
-};
+  rules: {
+    "local/no-while": "warn",
+  },
+});
 ```

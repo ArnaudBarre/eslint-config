@@ -27,7 +27,7 @@ export const rule: TSESLint.RuleModule<"error"> = {
           });
         } else {
           if (needJSXEscape.test(node.expression.value)) return;
-          if (context.getSourceCode().getCommentsInside(node).length) return;
+          if (context.sourceCode.getCommentsInside(node).length) return;
           context.report({
             node,
             messageId: "error",

@@ -36,10 +36,10 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
           {
             messageId: "suggestion",
             fix: (fixer) => {
-              const previousToken = context
-                .getSourceCode()
-                .getTokenBefore(node, { includeComments: true });
-              const lastToken = context.getSourceCode().getLastToken(node);
+              const previousToken = context.sourceCode.getTokenBefore(node, {
+                includeComments: true,
+              });
+              const lastToken = context.sourceCode.getLastToken(node);
               if (!previousToken || !lastToken) return null;
               return fixer.replaceTextRange(
                 [previousToken.range[1], lastToken.range[1]],
@@ -110,7 +110,6 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
                 if (key.type !== "Identifier") continue;
                 const used = param.properties.some(
                   (property) =>
-                    property.type === "Property" &&
                     property.key.type === "Identifier" &&
                     property.key.name === key.name,
                 );

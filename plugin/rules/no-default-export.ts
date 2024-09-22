@@ -8,20 +8,23 @@ export const rule: TSESLint.RuleModule<"error"> = {
     schema: [],
   },
   defaultOptions: [],
-  create: (context) => ({
-    ExportDefaultDeclaration(node) {
-      context.report({ node, messageId: "error" });
-    },
-    ExportNamedDeclaration(node) {
-      if (
-        node.specifiers.some(
-          (specifier) => specifier.exported.name === "default",
-        )
-      ) {
+  create: (context) => {
+    if (context.filename.includes(".config.")) return {};
+    return {
+      ExportDefaultDeclaration(node) {
         context.report({ node, messageId: "error" });
-      }
-    },
-  }),
+      },
+      ExportNamedDeclaration(node) {
+        if (
+          node.specifiers.some(
+            (specifier) => specifier.exported.name === "default",
+          )
+        ) {
+          context.report({ node, messageId: "error" });
+        }
+      },
+    };
+  },
 };
 
 export const cases: Cases = {

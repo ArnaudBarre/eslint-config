@@ -215,7 +215,7 @@ export default tseslint.config(
       "@typescript-eslint/no-require-imports": "warn",
       "@typescript-eslint/no-unnecessary-condition": [
         "warn",
-        { allowConstantLoopConditions: true },
+        { allowConstantLoopConditions: true, checkTypePredicates: true },
       ],
       "@typescript-eslint/no-unnecessary-template-expression": "warn",
       "@typescript-eslint/no-unnecessary-type-arguments": "warn",

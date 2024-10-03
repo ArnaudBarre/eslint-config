@@ -59,7 +59,7 @@ export default [...baseConfig];
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
-    "lib": ["ES2022"]
+    "lib": ["ES2023"]
 
     /* ... */
   }

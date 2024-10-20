@@ -1,10 +1,10 @@
 {
   "include": ["**/*.ts"],
   "compilerOptions": {
-    /* Target node18 */
-    "module": "ESNext",
-    "lib": ["ES2022"],
+    /* Target node 18 */
     "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2023"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -19,6 +19,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
+    "noUncheckedSideEffectImports": true,
     "noPropertyAccessFromIndexSignature": true
   }
 }

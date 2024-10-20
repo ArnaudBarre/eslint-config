@@ -17,21 +17,22 @@ export default [...baseConfig];
 // package.json
 "scripts": {
   "lint": "bun lint-ci --fix --cache",
-  "lint-ci": "eslint . --max-warnings 0"
+  "lint-ci": "eslint --max-warnings 0"
 }
 ```
 
-## TS config (5.5)
+## TS config (5.6)
+
+### Web project
 
 ```json
 {
   "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "target": "ES2021",
-    "useDefineForClassFields": true,
+    "target": "ES2022",
     "jsx": "react-jsx",
     "module": "ESNext",
-    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -46,12 +47,13 @@ export default [...baseConfig];
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
+    "noUncheckedSideEffectImports": true,
     "noPropertyAccessFromIndexSignature": true
   }
 }
 ```
 
-### For Node projects
+### Node project (18-22)
 
 ```json
 {
@@ -61,7 +63,7 @@ export default [...baseConfig];
     "module": "ESNext",
     "lib": ["ES2023"]
 
-    /* ... */
+    /* Same as web */
   }
 }
 ```

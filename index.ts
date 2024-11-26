@@ -249,7 +249,10 @@ export default tseslint.config(
       ],
       "@typescript-eslint/switch-exhaustiveness-check": [
         "warn",
-        { allowDefaultCaseForExhaustiveSwitch: false },
+        {
+          allowDefaultCaseForExhaustiveSwitch: false,
+          considerDefaultExhaustiveForUnions: true,
+        },
       ],
       "@typescript-eslint/unified-signatures": "warn",
 

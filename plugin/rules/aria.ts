@@ -502,6 +502,7 @@ const map: Record<
         return "menuitemcheckbox";
       case "RADIO":
         return "menuitemradio";
+      case undefined:
       default:
         return undefined;
     }
@@ -539,6 +540,7 @@ const map: Record<
       case "SEARCH": // with [list] selector it's combobox
       case "TEL": // with [list] selector it's combobox
       case "URL": // with [list] selector it's combobox
+      case undefined:
       default:
         return "textbox";
     }

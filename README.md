@@ -9,8 +9,9 @@ yarn add --dev eslint @arnaud-barre/eslint-config
 ```js
 // eslint.config.js
 import baseConfig from "@arnaud-barre/eslint-config";
+import tseslint from "typescript-eslint";
 
-export default [...baseConfig];
+export default tseslint.config(...baseConfig);
 ```
 
 ```json
@@ -21,7 +22,7 @@ export default [...baseConfig];
 }
 ```
 
-## TS config (5.6)
+## TS config (5.7)
 
 ### Web project
 

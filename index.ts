@@ -3,7 +3,6 @@ import { join } from "node:path";
 import restrictedGlobals from "confusing-browser-globals";
 // @ts-expect-error
 import reactHooks from "eslint-plugin-react-hooks";
-// @ts-expect-error
 import reactRefresh from "eslint-plugin-react-refresh";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";

@@ -4,7 +4,7 @@ export type Cases = {
     name: string;
     code: string;
     fileName?: string;
-    errorId?: string;
+    errorId?: string | string[];
     fixOutput?: string;
     suggestionOutput?: string;
   }[];

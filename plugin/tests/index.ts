@@ -57,20 +57,18 @@ for (const filePath of readdirSync("plugin/rules")) {
     fixOutput,
     suggestionOutput,
   } of cases.invalid) {
+    const suggestions = suggestionOutput
+      ? [{ messageId: "suggestion", output: suggestionOutput }]
+      : [];
     it(ruleName, name, rule, {
       valid: [],
       invalid: [
         {
           code,
           filename: fileName ?? "mock.tsx",
-          errors: [
-            {
-              messageId: errorId ?? "error",
-              suggestions: suggestionOutput
-                ? [{ messageId: "suggestion", output: suggestionOutput }]
-                : [],
-            },
-          ],
+          errors: Array.isArray(errorId)
+            ? errorId.map((id) => ({ messageId: id, suggestions }))
+            : [{ messageId: errorId ?? "error", suggestions }],
           output: fixOutput ?? null,
         },
       ],

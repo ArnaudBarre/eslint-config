@@ -58,7 +58,6 @@ export default tseslint.config(
       "no-unsafe-finally": "warn",
       "require-atomic-updates": "warn",
       "use-isnan": "warn",
-      "array-callback-return": "warn",
       "curly": ["warn", "multi-line", "consistent"],
       "eqeqeq": "warn",
       "no-alert": "warn",

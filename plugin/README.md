@@ -2,6 +2,7 @@
 
 - context-display-name: Enforce displayName for React contexts
 - jsx-boolean-value: Enforce boolean shorthand
+- jsx-data-lowercase: Enforce lowercase data attributes
 - jsx-curly-brace-presence: Catch unnecessary curly braces
 - jsx-fragments: Enforce shorthand for fragments
 - jsx-key: Validate JSX has key prop when in array or iterator
@@ -27,6 +28,7 @@
 
 ## Additional rules
 
+- array-callback-return: Ensure array callbacks that require a return value (map, filter, find, some, ...) don't have undefined in their return type
 - jsx-no-lonely-template-string: Enforce ``{`Hello ${name}`}`` -> `Hello {name}` in JSX
 - jsx-no-number-truthiness: Disallow `list.length && ...` in JSX
 - no-unused-property-signature: Check for unused option in functions using object parameters types

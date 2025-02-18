@@ -1,38 +1,53 @@
-import type { TSESLint, TSESTree } from "@typescript-eslint/utils";
+import {
+  ESLintUtils,
+  type TSESLint,
+  type TSESTree,
+} from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
-export const rule: TSESLint.RuleModule<"missingKey" | "keyFirst"> = {
+const reactComponentNameRE = /^[A-Z][a-zA-Z0-9]*$/u;
+
+export const rule: TSESLint.RuleModule<
+  "missingKey" | "keyFirst" | "keySpread" | "keyInProps"
+> = {
   meta: {
     messages: {
       missingKey: "Missing key",
-      keyFirst: "Key should be first or just after a spread",
+      keyFirst: "Key should be first",
+      keySpread: "Key should not be spread",
+      keyInProps: '"key" can\'t be part of props',
     },
     type: "problem",
     schema: [],
   },
   defaultOptions: [],
   create: (context) => {
+    const service = ESLintUtils.getParserServices(context);
+    const typeChecker = service.program.getTypeChecker();
+
     const reportFragment = (node: TSESTree.JSXFragment) => {
       context.report({ messageId: "missingKey", node: node.openingFragment });
     };
     const checkElement = (node: TSESTree.JSXElement) => {
       let keyAttr: { index: number; node: TSESTree.JSXAttribute } | undefined;
-      let spreadIndex: number | undefined;
       for (const [index, attr] of node.openingElement.attributes.entries()) {
-        if (attr.type === "JSXAttribute") {
-          if (attr.name.type === "JSXIdentifier" && attr.name.name === "key") {
-            keyAttr = { index, node: attr };
+        if (
+          attr.type === "JSXAttribute" &&
+          attr.name.type === "JSXIdentifier" &&
+          attr.name.name === "key"
+        ) {
+          keyAttr = { index, node: attr };
+        }
+        if (attr.type === "JSXSpreadAttribute") {
+          const tsNode = service.esTreeNodeToTSNodeMap.get(attr.argument);
+          const type = typeChecker.getTypeAtLocation(tsNode);
+          if (type.getProperty("key")) {
+            context.report({ messageId: "keySpread", node: attr });
           }
-        } else if (!keyAttr) {
-          spreadIndex = index;
         }
       }
       if (keyAttr) {
-        if (
-          spreadIndex === undefined || spreadIndex > keyAttr.index
-            ? keyAttr.index !== 0
-            : keyAttr.index !== spreadIndex + 1
-        ) {
+        if (keyAttr.index !== 0) {
           context.report({ messageId: "keyFirst", node: keyAttr.node });
         }
       } else {
@@ -86,6 +101,19 @@ export const rule: TSESLint.RuleModule<"missingKey" | "keyFirst"> = {
       }
     };
 
+    const checkIfReactComponentWithKeyInProps = (
+      id: TSESTree.Identifier,
+      fnNode: TSESTree.FunctionDeclaration | TSESTree.ArrowFunctionExpression,
+    ) => {
+      if (!reactComponentNameRE.test(id.name)) return;
+      if (fnNode.params.length === 0) return;
+      const tsNode = service.esTreeNodeToTSNodeMap.get(fnNode.params[0]);
+      const type = typeChecker.getTypeAtLocation(tsNode);
+      if (type.getProperty("key")) {
+        context.report({ messageId: "keyInProps", node: id });
+      }
+    };
+
     return {
       JSXElement(node) {
         if (node.parent.type === "ArrayExpression") checkElement(node);
@@ -110,6 +138,21 @@ export const rule: TSESLint.RuleModule<"missingKey" | "keyFirst"> = {
           }
         }
       },
+      VariableDeclaration(node) {
+        if (node.declarations.length !== 1) return;
+        if (node.declarations[0].init?.type !== "ArrowFunctionExpression") {
+          return;
+        }
+        if (node.declarations[0].id.type !== "Identifier") return;
+        checkIfReactComponentWithKeyInProps(
+          node.declarations[0].id,
+          node.declarations[0].init,
+        );
+      },
+      FunctionDeclaration(node) {
+        if (!node.id) return;
+        checkIfReactComponentWithKeyInProps(node.id, node);
+      },
     };
   },
 };
@@ -121,8 +164,24 @@ export const cases: Cases = {
       code: "bar.map(el => <Bar key={el.id} baz={2} />)",
     },
     {
-      name: "Map with key after spread",
-      code: "bar.map(el => <Bar foo={4} {...el} bar={2} {...parent} key={el.id} baz={2} {...rest} />)",
+      name: "Map with key and spread",
+      code: "[{ id: 1 }].map(el => <Bar key={el.id} {...el} />)",
+    },
+    {
+      name: "Map with key and spread with destructuring",
+      code: "[{ key: 1, foo: 2 }].map(({ key, ...rest }) => <Bar key={key} {...rest} />)",
+    },
+    {
+      name: "Function expression with key in props",
+      code: `export const Foo = ({ foo }: Omit<{ key: string; foo: number }, "key">) => (
+        <Bar key={foo} foo={foo} />
+      )`,
+    },
+    {
+      name: "Function declaration with key omitted in props",
+      code: `export function Foo({ foo }: Omit<{ key: string; foo: number }, "key">) {
+        return <Bar key={foo} foo={foo} />
+      }`,
     },
   ],
   invalid: [
@@ -166,9 +225,23 @@ export const cases: Cases = {
       errorId: "keyFirst",
     },
     {
-      name: "Key not first after spread",
-      code: "bar.map(el => <Bar {...el} baz={2} key={el.id} />)",
-      errorId: "keyFirst",
+      name: "Map with spread without destructuring",
+      code: "[{ key: 1, foo: 2 }].map(el => <Bar {...el} />)",
+      errorId: ["missingKey", "keySpread"],
+    },
+    {
+      name: "Key in React prop type",
+      code: `export const Foo = ({ key, foo }: { key: string; foo: number }) => (
+        <Bar key={key} foo={foo} />
+      )`,
+      errorId: "keyInProps",
+    },
+    {
+      name: "Key in React prop type function declaration",
+      code: `export function Foo({ key, foo }: { key: string; foo: number }) {
+        return <Bar key={key} foo={foo} />
+      }`,
+      errorId: "keyInProps",
     },
   ],
 };

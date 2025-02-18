@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-config",
   "description": "TS-React focused ESLint flat configuration",
-  "version": "5.2.4",
+  "version": "5.2.5",
   "license": "MIT",
   "type": "module",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
@@ -30,7 +30,7 @@
     "confusing-browser-globals": "^1.0.11",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "eslint-plugin-unicorn": "^56.0.1",
+    "eslint-plugin-unicorn": "^57.0.0",
     "globals": "^15.15.0",
     "typescript-eslint": "^8.24.1"
   },

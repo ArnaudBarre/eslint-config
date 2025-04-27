@@ -39,6 +39,7 @@ export default tseslint.config(...baseConfig);
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "noEmit": true,
 
     /* Linting */
@@ -54,7 +55,7 @@ export default tseslint.config(...baseConfig);
 }
 ```
 
-### Node project (18-22)
+### Node project (20-22)
 
 ```json
 {

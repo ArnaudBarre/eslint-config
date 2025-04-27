@@ -10,6 +10,8 @@ export const rule: TSESLint.RuleModule<
   | "first"
   | "uselessPathSegments"
   | "suggestion"
+  | "noImportDefaultAsNamed"
+  | "noExportDefaultAsNamed"
 > = {
   meta: {
     messages: {
@@ -20,6 +22,8 @@ export const rule: TSESLint.RuleModule<
       uselessPathSegments:
         'Useless path segments for "{{ importPath }}", should be "{{ shortPath }}"',
       suggestion: "Simplify",
+      noImportDefaultAsNamed: "Don't use named import for default import",
+      noExportDefaultAsNamed: "Don't use named export for default export",
     },
     type: "problem",
     hasSuggestions: true,
@@ -58,6 +62,19 @@ export const rule: TSESLint.RuleModule<
         if (!topLevelImports.has(node)) {
           context.report({ messageId: "first", node });
           return;
+        }
+
+        const defaultSpecifier = node.specifiers.find(
+          (specifier) =>
+            specifier.type === "ImportSpecifier" &&
+            specifier.imported.type === "Identifier" &&
+            specifier.imported.name === "default",
+        );
+        if (defaultSpecifier) {
+          context.report({
+            messageId: "noImportDefaultAsNamed",
+            node: defaultSpecifier,
+          });
         }
 
         const rawValue = node.source.value;
@@ -104,6 +121,19 @@ export const rule: TSESLint.RuleModule<
 
         if (!existsSync(importedPath)) {
           context.report({ messageId: "unresolved", node });
+        }
+      },
+      ExportNamedDeclaration(node) {
+        const defaultSpecifier = node.specifiers.find(
+          (specifier) =>
+            specifier.exported.type === "Identifier" &&
+            specifier.exported.name === "default",
+        );
+        if (defaultSpecifier) {
+          context.report({
+            messageId: "noExportDefaultAsNamed",
+            node: defaultSpecifier,
+          });
         }
       },
     };
@@ -203,6 +233,16 @@ declare module "*.svg" {
       name: "Unresolved",
       code: "import './mock3.tsx';",
       errorId: "unresolved",
+    },
+    {
+      name: "Default import as named",
+      code: "import { default as a } from './mock2.tsx';",
+      errorId: "noImportDefaultAsNamed",
+    },
+    {
+      name: "Default export as named",
+      code: "const a = 1; export { a as default };",
+      errorId: "noExportDefaultAsNamed",
     },
   ],
 };

@@ -116,7 +116,7 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
                 if (ta.type === "TSTypeLiteral" && !used) {
                   report(member);
                 } else if ("usedKeys" in withMember && used) {
-                  if (!withMember.usedKeys) withMember.usedKeys = new Set();
+                  withMember.usedKeys ??= new Set();
                   withMember.usedKeys.add(key.name);
                 }
               }

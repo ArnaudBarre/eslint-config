@@ -1,7 +1,6 @@
 import { join } from "node:path";
 // @ts-expect-error
 import restrictedGlobals from "confusing-browser-globals";
-// @ts-expect-error
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import unicorn from "eslint-plugin-unicorn";
@@ -275,6 +274,8 @@ export default tseslint.config(
       "unicorn/no-single-promise-in-promise-methods": "warn",
       "unicorn/no-thenable": "warn",
       "unicorn/no-typeof-undefined": "warn",
+      "unicorn/no-unnecessary-array-flat-depth": "warn",
+      "unicorn/no-unnecessary-slice-end": "warn",
       "unicorn/no-useless-fallback-in-spread": "warn",
       "unicorn/no-useless-length-check": "warn",
       "unicorn/no-useless-promise-resolve-reject": "warn",
@@ -287,6 +288,7 @@ export default tseslint.config(
       "unicorn/prefer-code-point": "warn",
       "unicorn/prefer-default-parameters": "warn",
       "unicorn/prefer-export-from": ["warn", { ignoreUsedVariables: true }],
+      "unicorn/prefer-import-meta-properties": "warn",
       "unicorn/prefer-modern-math-apis": "warn",
       "unicorn/prefer-negative-index": "warn",
       "unicorn/prefer-optional-catch-binding": "warn",

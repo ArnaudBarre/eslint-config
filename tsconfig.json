@@ -1,7 +1,7 @@
 {
   "include": ["**/*.ts"],
   "compilerOptions": {
-    /* Target node 18 */
+    /* Target node 20 */
     "target": "ES2022",
     "module": "ESNext",
     "lib": ["ES2023"],
@@ -10,6 +10,7 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "noEmit": true,
 
     /* Linting */

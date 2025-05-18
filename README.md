@@ -22,7 +22,7 @@ export default tseslint.config(...baseConfig);
 }
 ```
 
-## TS config (5.7)
+## TS config (5.8)
 
 ### Web project
 
@@ -67,6 +67,34 @@ export default tseslint.config(...baseConfig);
 
     /* Same as web */
   }
+}
+```
+
+## Prettier config (3.5.3)
+
+### Web projects
+
+```json
+// package.json
+"prettier": {
+  "experimentalOperatorPosition": "start",
+  "xmlWhitespaceSensitivity": "ignore",
+  "plugins": [
+    "@arnaud-barre/prettier-plugin-sort-imports",
+    "@prettier/plugin-xml"
+  ]
+}
+```
+
+### Node projects
+
+```json
+// package.json
+"prettier": {
+  "experimentalOperatorPosition": "start",
+  "plugins": [
+    "@arnaud-barre/prettier-plugin-sort-imports"
+  ]
 }
 ```
 

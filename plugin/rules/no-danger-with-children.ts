@@ -13,14 +13,14 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     JSXElement(node) {
       if (
-        (node.closingElement !== null ||
-          node.openingElement.attributes.some(
+        (node.closingElement !== null
+          || node.openingElement.attributes.some(
             (a) => a.type === "JSXAttribute" && a.name.name === "children",
-          )) &&
-        node.openingElement.attributes.some(
+          ))
+        && node.openingElement.attributes.some(
           (a) =>
-            a.type === "JSXAttribute" &&
-            a.name.name === "dangerouslySetInnerHTML",
+            a.type === "JSXAttribute"
+            && a.name.name === "dangerouslySetInnerHTML",
         )
       ) {
         context.report({ node, messageId: "error" });

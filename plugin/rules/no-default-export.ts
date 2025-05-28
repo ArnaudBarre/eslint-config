@@ -18,8 +18,8 @@ export const rule: TSESLint.RuleModule<"error"> = {
         if (
           node.specifiers.some(
             (specifier) =>
-              specifier.exported.type === "Identifier" &&
-              specifier.exported.name === "default",
+              specifier.exported.type === "Identifier"
+              && specifier.exported.name === "default",
           )
         ) {
           context.report({ node, messageId: "error" });

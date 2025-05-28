@@ -20,9 +20,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
     const isNumber = (type: Type) => {
       const stringType = typeChecker.typeToString(type);
       if (
-        stringType === "0" ||
-        stringType === "number" ||
-        stringType === "bigint"
+        stringType === "0"
+        || stringType === "number"
+        || stringType === "bigint"
       ) {
         return true;
       }

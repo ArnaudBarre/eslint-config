@@ -11,14 +11,14 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     JSXAttribute(node) {
       if (
-        node.name.type === "JSXIdentifier" &&
-        node.name.name === "autoComplete" &&
-        node.parent.name.type === "JSXIdentifier" &&
-        node.parent.name.name.toLowerCase().includes("input") &&
-        (!node.value ||
-          (node.value.type === "Literal" &&
-            typeof node.value.value === "string" &&
-            !isValidAutocomplete(node.value.value)))
+        node.name.type === "JSXIdentifier"
+        && node.name.name === "autoComplete"
+        && node.parent.name.type === "JSXIdentifier"
+        && node.parent.name.name.toLowerCase().includes("input")
+        && (!node.value
+          || (node.value.type === "Literal"
+            && typeof node.value.value === "string"
+            && !isValidAutocomplete(node.value.value)))
       ) {
         context.report({ messageId: "error", node: node.value ?? node });
       }
@@ -113,8 +113,8 @@ const isValidAutocomplete = (_value: string) => {
   if (autocompleteTerms.length !== 1) return false;
 
   return (
-    standaloneTerms.includes(autocompleteTerms[0]) ||
-    qualifiedTerms.includes(autocompleteTerms[0])
+    standaloneTerms.includes(autocompleteTerms[0])
+    || qualifiedTerms.includes(autocompleteTerms[0])
   );
 };
 

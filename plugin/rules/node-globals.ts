@@ -15,9 +15,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
     ) => {
       const specifier = node.specifiers.find(
         (s) =>
-          s.type === "ImportSpecifier" &&
-          s.imported.type === "Identifier" &&
-          names.includes(s.imported.name),
+          s.type === "ImportSpecifier"
+          && s.imported.type === "Identifier"
+          && names.includes(s.imported.name),
       );
       if (specifier) context.report({ node: specifier, messageId: "error" });
     };

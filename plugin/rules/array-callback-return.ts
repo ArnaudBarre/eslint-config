@@ -27,11 +27,11 @@ export const rule: TSESLint.RuleModule<MessageId> = {
     messages: {
       shouldBeBoolean: base + "Update the code to return a boolean value.",
       flatMap:
-        base +
-        "If this is intentional, update the code to return an array of a single value.",
+        base
+        + "If this is intentional, update the code to return an array of a single value.",
       addTypeAnnotation:
-        base +
-        "If this is intentional, add an explicit type to the function or use a disable comment.",
+        base
+        + "If this is intentional, add an explicit type to the function or use a disable comment.",
     },
     schema: [],
   },
@@ -43,15 +43,15 @@ export const rule: TSESLint.RuleModule<MessageId> = {
     return {
       MemberExpression(node) {
         if (
-          node.property.type === "Identifier" &&
-          methods.includes(node.property.name) &&
-          node.parent.type === "CallExpression" &&
-          node.parent.arguments.length >= 1
+          node.property.type === "Identifier"
+          && methods.includes(node.property.name)
+          && node.parent.type === "CallExpression"
+          && node.parent.arguments.length >= 1
         ) {
           const callback = node.parent.arguments[0];
           if (
-            callback.type === "ArrowFunctionExpression" &&
-            callback.expression
+            callback.type === "ArrowFunctionExpression"
+            && callback.expression
           ) {
             return;
           }
@@ -64,14 +64,14 @@ export const rule: TSESLint.RuleModule<MessageId> = {
             const type = signature.getReturnType();
             /* eslint-disable no-bitwise */
             if (
-              type.flags & TypeFlags.Undefined ||
-              (type.isUnion() &&
-                type.types.some((t) => t.flags & TypeFlags.Undefined))
+              type.flags & TypeFlags.Undefined
+              || (type.isUnion()
+                && type.types.some((t) => t.flags & TypeFlags.Undefined))
             ) {
               const messageId = methodsRecords[node.property.name];
               if (
-                messageId === "addTypeAnnotation" &&
-                node.parent.typeArguments
+                messageId === "addTypeAnnotation"
+                && node.parent.typeArguments
               ) {
                 return;
               }

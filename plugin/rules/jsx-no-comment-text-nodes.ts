@@ -14,9 +14,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => {
     const checkText = (node: TSESTree.JSXText | TSESTree.Literal) => {
       if (
-        /^\s*\/[/*]/mu.test(node.raw) &&
-        node.parent.type !== "JSXAttribute" &&
-        node.parent.type.includes("JSX")
+        /^\s*\/[/*]/mu.test(node.raw)
+        && node.parent.type !== "JSXAttribute"
+        && node.parent.type.includes("JSX")
       ) {
         context.report({ node, messageId: "error" });
       }

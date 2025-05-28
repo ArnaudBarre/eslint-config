@@ -19,26 +19,26 @@ export const rule: TSESLint.RuleModule<"missing" | "different"> = {
     return {
       "VariableDeclarator"(node) {
         if (
-          node.init?.type === "CallExpression" &&
-          node.init.callee.type === "Identifier" &&
-          node.init.callee.name === "createContext" &&
-          node.id.type === "Identifier"
+          node.init?.type === "CallExpression"
+          && node.init.callee.type === "Identifier"
+          && node.init.callee.name === "createContext"
+          && node.id.type === "Identifier"
         ) {
           contexts.set(node.id.name, { node: node.id, hasDisplayName: false });
         }
       },
       "AssignmentExpression"(node) {
         if (
-          node.left.type === "MemberExpression" &&
-          node.left.object.type === "Identifier" &&
-          contexts.has(node.left.object.name) &&
-          node.left.property.type === "Identifier" &&
-          node.left.property.name === "displayName"
+          node.left.type === "MemberExpression"
+          && node.left.object.type === "Identifier"
+          && contexts.has(node.left.object.name)
+          && node.left.property.type === "Identifier"
+          && node.left.property.name === "displayName"
         ) {
           contexts.get(node.left.object.name)!.hasDisplayName = true;
           if (
-            node.right.type !== "Literal" ||
-            node.right.value !== node.left.object.name
+            node.right.type !== "Literal"
+            || node.right.value !== node.left.object.name
           ) {
             context.report({ messageId: "different", node: node.right });
           }

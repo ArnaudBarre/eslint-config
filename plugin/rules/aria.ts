@@ -38,9 +38,9 @@ export const rule: TSESLint.RuleModule<
         const value = alt?.type === "JSXAttribute" && alt.value;
         if (value) {
           if (
-            value.type === "Literal" &&
-            typeof value.value === "string" &&
-            redundantAltRe.test(value.value)
+            value.type === "Literal"
+            && typeof value.value === "string"
+            && redundantAltRe.test(value.value)
           ) {
             context.report({ messageId: "redundantAlt", node: value });
           }
@@ -49,26 +49,26 @@ export const rule: TSESLint.RuleModule<
         }
       }
       if (
-        node.name.type === "JSXIdentifier" &&
-        dom[node.name.name] && // Reserved
-        node.attributes.some(
+        node.name.type === "JSXIdentifier"
+        && dom[node.name.name] // Reserved
+        && node.attributes.some(
           (a) =>
-            a.type === "JSXAttribute" &&
-            a.name.type === "JSXIdentifier" &&
-            (a.name.name === "role" || a.name.name.startsWith("aria-")),
+            a.type === "JSXAttribute"
+            && a.name.type === "JSXIdentifier"
+            && (a.name.name === "role" || a.name.name.startsWith("aria-")),
         )
       ) {
         context.report({ messageId: "unsupported", node });
       }
       if (
-        node.name.type === "JSXIdentifier" &&
-        node.name.name === "iframe" &&
-        !node.attributes.some(
+        node.name.type === "JSXIdentifier"
+        && node.name.name === "iframe"
+        && !node.attributes.some(
           (a) =>
-            a.type === "JSXAttribute" &&
-            a.name.name === "title" &&
-            a.value &&
-            (a.value.type !== "Literal" || !!a.value.value),
+            a.type === "JSXAttribute"
+            && a.name.name === "title"
+            && a.value
+            && (a.value.type !== "Literal" || !!a.value.value),
         )
       ) {
         context.report({ messageId: "iframeTitle", node });
@@ -82,23 +82,23 @@ export const rule: TSESLint.RuleModule<
     },
     JSXAttribute(node) {
       if (
-        node.name.type === "JSXIdentifier" &&
-        node.name.name.startsWith("aria-") &&
-        !ariaAttributes.includes(node.name.name)
+        node.name.type === "JSXIdentifier"
+        && node.name.name.startsWith("aria-")
+        && !ariaAttributes.includes(node.name.name)
       ) {
         context.report({ messageId: "ariaAttribute", node: node.name });
       }
       if (
-        node.name.type === "JSXIdentifier" &&
-        node.name.name === "role" &&
-        node.parent.name.type === "JSXIdentifier" &&
-        node.parent.name.name in dom
+        node.name.type === "JSXIdentifier"
+        && node.name.name === "role"
+        && node.parent.name.type === "JSXIdentifier"
+        && node.parent.name.name in dom
       ) {
         if (!node.value) {
           context.report({ messageId: "role", node });
         } else if (
-          node.value.type === "Literal" &&
-          typeof node.value.value === "string"
+          node.value.type === "Literal"
+          && typeof node.value.value === "string"
         ) {
           if (!nonAbstractRoles.includes(node.value.value)) {
             context.report({ messageId: "role", node: node.value });
@@ -441,19 +441,19 @@ export const getImplicitRole = (element: string, attributes: Attributes) =>
 const hasProp = (attributes: Attributes, name: string) =>
   attributes.some(
     (a) =>
-      a.type === "JSXAttribute" &&
-      a.name.type === "JSXIdentifier" &&
-      a.name.name === name,
+      a.type === "JSXAttribute"
+      && a.name.type === "JSXIdentifier"
+      && a.name.name === name,
   );
 
 const getProp = (attributes: Attributes, name: string) => {
   for (const a of attributes) {
     if (
-      a.type === "JSXAttribute" &&
-      a.name.type === "JSXIdentifier" &&
-      a.name.name === name &&
-      a.value?.type === "Literal" &&
-      typeof a.value.value === "string"
+      a.type === "JSXAttribute"
+      && a.name.type === "JSXIdentifier"
+      && a.name.name === name
+      && a.value?.type === "Literal"
+      && typeof a.value.value === "string"
     ) {
       return a.value.value;
     }

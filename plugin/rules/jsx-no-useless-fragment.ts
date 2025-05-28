@@ -15,22 +15,22 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
       const nonPaddingChildren = node.children.filter(
         (child) =>
           !(
-            child.type === "JSXText" &&
-            isOnlyWhitespace(child.raw) &&
-            child.raw.includes("\n")
+            child.type === "JSXText"
+            && isOnlyWhitespace(child.raw)
+            && child.raw.includes("\n")
           ),
       );
 
       if (
-        nonPaddingChildren.length < 2 &&
+        nonPaddingChildren.length < 2
         // Exclude this valid use '<Foo content={<>bar</>} />'
         // Could be replaced by string prop but plays better nice with Prettier for long lines
-        !(
-          node.children.length === 1 &&
-          node.children[0].type === "JSXText" &&
-          !(
-            node.parent.type === "JSXElement" ||
-            node.parent.type === "JSXFragment"
+        && !(
+          node.children.length === 1
+          && node.children[0].type === "JSXText"
+          && !(
+            node.parent.type === "JSXElement"
+            || node.parent.type === "JSXFragment"
           )
         )
       ) {
@@ -43,9 +43,9 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
       }
 
       if (
-        node.parent.type === "JSXElement" &&
-        node.parent.openingElement.name.type === "JSXIdentifier" &&
-        domElementRE.test(node.parent.openingElement.name.name)
+        node.parent.type === "JSXElement"
+        && node.parent.openingElement.name.type === "JSXIdentifier"
+        && domElementRE.test(node.parent.openingElement.name.name)
       ) {
         context.report({
           messageId: "error",
@@ -80,9 +80,9 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
 
         const child = nonPaddingChildren.at(0);
         if (
-          outsideJSX &&
-          (child?.type === "JSXExpressionContainer" ||
-            child?.type === "JSXSpreadChild")
+          outsideJSX
+          && (child?.type === "JSXExpressionContainer"
+            || child?.type === "JSXSpreadChild")
         ) {
           return [
             fixer.removeRange([opener.range[0], child.expression.range[0]]),
@@ -103,9 +103,9 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
     return {
       JSXElement(node) {
         if (
-          node.openingElement.name.type === "JSXIdentifier" &&
-          node.openingElement.name.name === "Fragment" &&
-          !node.openingElement.attributes.length
+          node.openingElement.name.type === "JSXIdentifier"
+          && node.openingElement.name.name === "Fragment"
+          && !node.openingElement.attributes.length
         ) {
           checkNode(node);
         }

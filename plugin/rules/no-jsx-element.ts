@@ -14,9 +14,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     TSQualifiedName(node) {
       if (
-        node.left.type === "Identifier" &&
-        node.left.name === "JSX" &&
-        node.right.name === "Element"
+        node.left.type === "Identifier"
+        && node.left.name === "JSX"
+        && node.right.name === "Element"
       ) {
         context.report({ node, messageId: "error" });
       }

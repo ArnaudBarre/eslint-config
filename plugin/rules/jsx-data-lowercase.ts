@@ -12,9 +12,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     JSXAttribute(node) {
       if (
-        node.name.type === "JSXIdentifier" &&
-        node.name.name.startsWith("data-") &&
-        node.name.name !== node.name.name.toLowerCase()
+        node.name.type === "JSXIdentifier"
+        && node.name.name.startsWith("data-")
+        && node.name.name !== node.name.name.toLowerCase()
       ) {
         const lowercaseName = node.name.name.toLowerCase();
         context.report({

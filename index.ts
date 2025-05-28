@@ -220,6 +220,7 @@ export default tseslint.config(
       "@typescript-eslint/no-unnecessary-template-expression": "warn",
       "@typescript-eslint/no-unnecessary-type-arguments": "warn",
       "@typescript-eslint/no-unnecessary-type-assertion": "warn",
+      "@typescript-eslint/no-unnecessary-type-conversion": "warn",
       "@typescript-eslint/no-useless-empty-export": "warn",
       "@typescript-eslint/non-nullable-type-assertion-style": "warn",
       "@typescript-eslint/prefer-as-const": "warn",

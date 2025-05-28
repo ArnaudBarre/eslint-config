@@ -30,9 +30,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     JSXElement(node) {
       if (
-        node.children.length > 0 &&
-        node.openingElement.name.type === "JSXIdentifier" &&
-        voidElements.has(node.openingElement.name.name)
+        node.children.length > 0
+        && node.openingElement.name.type === "JSXIdentifier"
+        && voidElements.has(node.openingElement.name.name)
       ) {
         context.report({ node, messageId: "error" });
       }

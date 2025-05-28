@@ -12,10 +12,10 @@ export const rule: TSESLint.RuleModule<"useShort"> = {
   create: (context) => ({
     JSXElement(node) {
       if (
-        node.closingElement && // Self-closing fragment are handle by uselessFragment
-        node.openingElement.name.type === "JSXIdentifier" &&
-        node.openingElement.name.name === "Fragment" &&
-        !node.openingElement.attributes.length
+        node.closingElement // Self-closing fragment are handle by uselessFragment
+        && node.openingElement.name.type === "JSXIdentifier"
+        && node.openingElement.name.name === "Fragment"
+        && !node.openingElement.attributes.length
       ) {
         context.report({
           node: node.openingElement,

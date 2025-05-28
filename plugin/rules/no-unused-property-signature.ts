@@ -79,12 +79,12 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
         for (const node of functions) {
           for (const param of node.params) {
             if (
-              param.type === "ObjectPattern" &&
+              param.type === "ObjectPattern"
               // Filter destructuring with rest elements
-              param.properties.every(
+              && param.properties.every(
                 (property) => property.type === "Property",
-              ) &&
-              param.typeAnnotation
+              )
+              && param.typeAnnotation
             ) {
               const ta = param.typeAnnotation.typeAnnotation;
               const withMember = (() => {
@@ -92,8 +92,8 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
                 if (ta.type !== "TSTypeReference") return null;
                 return typeLiteralDefs.find(
                   (typeDef) =>
-                    typeDef.name ===
-                    (ta.typeName.type === "Identifier" && ta.typeName.name),
+                    typeDef.name
+                    === (ta.typeName.type === "Identifier" && ta.typeName.name),
                 );
               })();
               if (!withMember) continue;
@@ -110,8 +110,8 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
                 if (key.type !== "Identifier") continue;
                 const used = param.properties.some(
                   (property) =>
-                    property.key.type === "Identifier" &&
-                    property.key.name === key.name,
+                    property.key.type === "Identifier"
+                    && property.key.name === key.name,
                 );
                 if (ta.type === "TSTypeLiteral" && !used) {
                   report(member);
@@ -126,10 +126,10 @@ export const rule: TSESLint.RuleModule<"error" | "suggestion"> = {
         for (const typeDef of typeLiteralDefs) {
           for (const member of typeDef.members) {
             if (
-              member.type === "TSPropertySignature" &&
-              member.key.type === "Identifier" &&
-              typeDef.usedKeys &&
-              !typeDef.usedKeys.has(member.key.name)
+              member.type === "TSPropertySignature"
+              && member.key.type === "Identifier"
+              && typeDef.usedKeys
+              && !typeDef.usedKeys.has(member.key.name)
             ) {
               report(member);
             }

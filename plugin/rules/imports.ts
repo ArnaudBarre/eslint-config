@@ -66,9 +66,9 @@ export const rule: TSESLint.RuleModule<
 
         const defaultSpecifier = node.specifiers.find(
           (specifier) =>
-            specifier.type === "ImportSpecifier" &&
-            specifier.imported.type === "Identifier" &&
-            specifier.imported.name === "default",
+            specifier.type === "ImportSpecifier"
+            && specifier.imported.type === "Identifier"
+            && specifier.imported.name === "default",
         );
         if (defaultSpecifier) {
           context.report({
@@ -126,8 +126,8 @@ export const rule: TSESLint.RuleModule<
       ExportNamedDeclaration(node) {
         const defaultSpecifier = node.specifiers.find(
           (specifier) =>
-            specifier.exported.type === "Identifier" &&
-            specifier.exported.name === "default",
+            specifier.exported.type === "Identifier"
+            && specifier.exported.name === "default",
         );
         if (defaultSpecifier) {
           context.report({

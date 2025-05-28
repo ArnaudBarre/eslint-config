@@ -12,10 +12,10 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     JSXExpressionContainer(node) {
       if (
-        node.expression.type === "Literal" &&
-        typeof node.expression.value === "string"
+        node.expression.type === "Literal"
+        && typeof node.expression.value === "string"
       ) {
-        if (node.expression.raw.toString().includes("\\")) return;
+        if (node.expression.raw.includes("\\")) return;
         if (node.parent.type === "JSXAttribute") {
           context.report({
             node,
@@ -38,9 +38,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
           });
         }
       } else if (
-        node.parent.type !== "JSXAttribute" &&
-        (node.expression.type === "JSXElement" ||
-          node.expression.type === "JSXFragment")
+        node.parent.type !== "JSXAttribute"
+        && (node.expression.type === "JSXElement"
+          || node.expression.type === "JSXFragment")
       ) {
         context.report({
           node,

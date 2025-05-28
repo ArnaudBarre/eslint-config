@@ -12,9 +12,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
   create: (context) => ({
     JSXAttribute(node) {
       if (
-        node.value?.type === "JSXExpressionContainer" &&
-        node.value.expression.type === "Literal" &&
-        node.value.expression.value === true
+        node.value?.type === "JSXExpressionContainer"
+        && node.value.expression.type === "Literal"
+        && node.value.expression.value === true
       ) {
         context.report({
           node,

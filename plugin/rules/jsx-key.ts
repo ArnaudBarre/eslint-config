@@ -32,9 +32,9 @@ export const rule: TSESLint.RuleModule<
       let keyAttr: { index: number; node: TSESTree.JSXAttribute } | undefined;
       for (const [index, attr] of node.openingElement.attributes.entries()) {
         if (
-          attr.type === "JSXAttribute" &&
-          attr.name.type === "JSXIdentifier" &&
-          attr.name.name === "key"
+          attr.type === "JSXAttribute"
+          && attr.name.type === "JSXIdentifier"
+          && attr.name.name === "key"
         ) {
           keyAttr = { index, node: attr };
         }
@@ -123,10 +123,10 @@ export const rule: TSESLint.RuleModule<
       },
       CallExpression(node) {
         if (
-          node.callee.type === "MemberExpression" &&
-          node.callee.property.type === "Identifier" &&
-          (node.callee.property.name === "map" ||
-            node.callee.property.name === "mapNotNull")
+          node.callee.type === "MemberExpression"
+          && node.callee.property.type === "Identifier"
+          && (node.callee.property.name === "map"
+            || node.callee.property.name === "mapNotNull")
         ) {
           const firstArg = node.arguments.at(0);
           if (firstArg?.type !== "ArrowFunctionExpression") return;

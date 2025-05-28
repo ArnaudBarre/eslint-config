@@ -58,8 +58,8 @@ export const rule: TSESLint.RuleModule<keyof typeof messages> = {
         if (typeof pattern.value !== "string") return;
         const flags = node.arguments.at(1);
         if (
-          !flags ||
-          (flags.type === "Literal" && typeof flags.value === "string")
+          !flags
+          || (flags.type === "Literal" && typeof flags.value === "string")
         ) {
           context.report({ node, messageId: "useLiteral" });
         }

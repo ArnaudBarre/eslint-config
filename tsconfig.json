@@ -4,7 +4,10 @@
     /* Target node 20 */
     "target": "ES2022",
     "module": "ESNext",
+    "moduleDetection": "force",
     "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -14,7 +17,6 @@
     "noEmit": true,
 
     /* Linting */
-    "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

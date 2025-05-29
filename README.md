@@ -33,7 +33,10 @@ export default tseslint.config(...baseConfig);
     "target": "ES2022",
     "jsx": "react-jsx",
     "module": "ESNext",
+    "moduleDetection": "force",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "skipLibCheck": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -43,7 +46,6 @@ export default tseslint.config(...baseConfig);
     "noEmit": true,
 
     /* Linting */
-    "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -63,7 +65,10 @@ export default tseslint.config(...baseConfig);
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
-    "lib": ["ES2023"]
+    "moduleDetection": "force",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true
 
     /* Same as web */
   }

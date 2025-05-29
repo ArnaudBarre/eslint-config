@@ -138,6 +138,7 @@ export default tseslint.config(
       "@typescript-eslint/default-param-last": "warn",
       "@typescript-eslint/dot-notation": "warn",
       "@typescript-eslint/no-array-constructor": "warn",
+      "@typescript-eslint/no-base-to-string": "warn",
       "@typescript-eslint/no-empty-function": "warn",
       "@typescript-eslint/no-implied-eval": "warn",
       "@typescript-eslint/no-loop-func": "warn",
@@ -210,6 +211,7 @@ export default tseslint.config(
       "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
       "@typescript-eslint/no-redundant-type-constituents": "warn",
       "@typescript-eslint/no-require-imports": "warn",
+      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
       "@typescript-eslint/no-unnecessary-condition": [
         "warn",
         {

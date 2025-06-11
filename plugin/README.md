@@ -34,3 +34,4 @@
 - no-unused-property-signature: Check for unused option in functions using object parameters types
 - no-useless-template-string: Enforce `` `Hello` `` -> `"Hello"`
 - one-line-if: Enforce `if (condition) ...` on one line when possible
+- no-alert: Custom implementation of base no-alert rule to not warn for confirm & prompt

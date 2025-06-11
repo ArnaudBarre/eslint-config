@@ -1,5 +1,6 @@
 import { readdirSync } from "node:fs";
 import { RuleTester } from "@typescript-eslint/rule-tester";
+import globals from "globals";
 import type { Cases } from "./types.ts";
 
 RuleTester.afterAll = () => undefined;
@@ -7,6 +8,7 @@ RuleTester.describe = (_, cb) => cb();
 RuleTester.it = (_, cb) => cb();
 const ruleTester = new RuleTester({
   languageOptions: {
+    globals: { ...globals.node, ...globals.browser },
     parserOptions: {
       project: "./tsconfig.json",
       tsconfigRootDir: import.meta.dirname,

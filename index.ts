@@ -59,7 +59,6 @@ export default tseslint.config(
       "use-isnan": "warn",
       "curly": ["warn", "multi-line", "consistent"],
       "eqeqeq": "warn",
-      "no-alert": "warn",
       "no-caller": "warn",
       "no-empty-pattern": "warn",
       "no-eval": "warn",

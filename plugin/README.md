@@ -35,3 +35,4 @@
 - no-useless-template-string: Enforce `` `Hello` `` -> `"Hello"`
 - one-line-if: Enforce `if (condition) ...` on one line when possible
 - no-alert: Custom implementation of base no-alert rule to not warn for confirm & prompt
+- no-unary-plus: Disallow `+"string"` (from https://github.com/JoachimMarin/eslint-plugin-no-unary-plus)

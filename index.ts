@@ -1,4 +1,3 @@
-import { join } from "node:path";
 // @ts-expect-error
 import restrictedGlobals from "confusing-browser-globals";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -29,10 +28,6 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       globals: { ...globals.node, ...globals.browser },
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: join(import.meta.dirname, "../../.."),
-      },
     },
     rules: {
       "for-direction": "warn",
@@ -132,18 +127,15 @@ export default tseslint.config(
       "prefer-rest-params": "warn",
       "prefer-spread": "warn",
       "require-yield": "warn",
+      "require-await": "warn",
 
       "@typescript-eslint/class-methods-use-this": "warn",
       "@typescript-eslint/default-param-last": "warn",
-      "@typescript-eslint/dot-notation": "warn",
       "@typescript-eslint/no-array-constructor": "warn",
-      "@typescript-eslint/no-base-to-string": "warn",
       "@typescript-eslint/no-empty-function": "warn",
-      "@typescript-eslint/no-implied-eval": "warn",
       "@typescript-eslint/no-loop-func": "warn",
       "@typescript-eslint/no-redeclare": "warn",
       "@typescript-eslint/no-shadow": "warn", // TODO: ideally builtinGlobals should be enabled but too many browser globals are enabled somehow
-      "@typescript-eslint/no-unsafe-unary-minus": "warn",
       "@typescript-eslint/no-unused-expressions": [
         "warn",
         {
@@ -157,12 +149,8 @@ export default tseslint.config(
         { argsIgnorePattern: "^_" },
       ],
       "@typescript-eslint/no-useless-constructor": "warn",
-      "@typescript-eslint/only-throw-error": "warn",
-      "@typescript-eslint/require-await": "warn",
-      "@typescript-eslint/return-await": ["warn", "always"],
       "@typescript-eslint/adjacent-overload-signatures": "warn",
       "@typescript-eslint/array-type": "warn",
-      "@typescript-eslint/await-thenable": "warn",
       "@typescript-eslint/consistent-generic-constructors": "warn",
       "@typescript-eslint/consistent-type-assertions": "warn",
       "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
@@ -184,78 +172,18 @@ export default tseslint.config(
           format: ["PascalCase"],
         },
       ],
-      "@typescript-eslint/no-array-delete": "warn",
-      "@typescript-eslint/no-confusing-void-expression": [
-        "warn",
-        { ignoreArrowShorthand: true },
-      ],
       "@typescript-eslint/no-dynamic-delete": "warn",
       "@typescript-eslint/no-extra-non-null-assertion": "warn",
-      "@typescript-eslint/no-floating-promises": "warn",
-      "@typescript-eslint/no-for-in-array": "warn",
       "@typescript-eslint/no-inferrable-types": "warn",
-      "@typescript-eslint/no-meaningless-void-operator": "warn",
       "@typescript-eslint/no-empty-object-type": "warn",
       "@typescript-eslint/no-unsafe-function-type": "warn",
       "@typescript-eslint/no-wrapper-object-types": "warn",
-      "@typescript-eslint/no-misused-promises": [
-        "warn",
-        {
-          checksConditionals: false,
-          checksVoidReturn: { arguments: false, attributes: false },
-        },
-      ],
-      "@typescript-eslint/no-misused-spread": "warn",
       "@typescript-eslint/no-namespace": "warn",
       "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
-      "@typescript-eslint/no-redundant-type-constituents": "warn",
       "@typescript-eslint/no-require-imports": "warn",
-      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
-      "@typescript-eslint/no-unnecessary-condition": [
-        "warn",
-        {
-          allowConstantLoopConditions: "only-allowed-literals",
-          checkTypePredicates: true,
-        },
-      ],
-      "@typescript-eslint/no-unnecessary-template-expression": "warn",
-      "@typescript-eslint/no-unnecessary-type-arguments": "warn",
-      "@typescript-eslint/no-unnecessary-type-assertion": "warn",
-      "@typescript-eslint/no-unnecessary-type-conversion": "warn",
       "@typescript-eslint/no-useless-empty-export": "warn",
-      "@typescript-eslint/non-nullable-type-assertion-style": "warn",
       "@typescript-eslint/prefer-as-const": "warn",
-      "@typescript-eslint/prefer-find": "warn",
-      "@typescript-eslint/prefer-includes": "warn",
-      "@typescript-eslint/prefer-nullish-coalescing": [
-        "warn",
-        { ignoreConditionalTests: false },
-      ],
-      "@typescript-eslint/prefer-optional-chain": "warn",
-      "@typescript-eslint/prefer-promise-reject-errors": "warn",
-      "@typescript-eslint/prefer-reduce-type-parameter": "warn",
-      "@typescript-eslint/prefer-return-this-type": "warn",
-      "@typescript-eslint/prefer-string-starts-ends-with": "warn",
       "@typescript-eslint/prefer-ts-expect-error": "warn",
-      "@typescript-eslint/restrict-plus-operands": "warn",
-      "@typescript-eslint/restrict-template-expressions": [
-        "warn",
-        {
-          allowAny: false,
-          allowArray: false,
-          allowBoolean: false,
-          allowNullish: false,
-          allowRegExp: false,
-          allowNever: false,
-        },
-      ],
-      "@typescript-eslint/switch-exhaustiveness-check": [
-        "warn",
-        {
-          allowDefaultCaseForExhaustiveSwitch: false,
-          considerDefaultExhaustiveForUnions: true,
-        },
-      ],
       "@typescript-eslint/unified-signatures": "warn",
 
       "react-hooks/rules-of-hooks": "error",

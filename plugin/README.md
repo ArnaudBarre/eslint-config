@@ -5,7 +5,6 @@
 - jsx-data-lowercase: Enforce lowercase data attributes
 - jsx-curly-brace-presence: Catch unnecessary curly braces
 - jsx-fragments: Enforce shorthand for fragments
-- jsx-key: Validate JSX has key prop when in array or iterator
 - jsx-no-comment-text-nodes: Catch comments as text nodes
 - jsx-no-useless-fragment: Catch useless fragments
 - jsx-self-closing: Enforce self-closing tags
@@ -28,9 +27,7 @@
 
 ## Additional rules
 
-- array-callback-return: Ensure array callbacks that require a return value (map, filter, find, some, ...) don't have undefined in their return type
 - jsx-no-lonely-template-string: Enforce ``{`Hello ${name}`}`` -> `Hello {name}` in JSX
-- jsx-no-number-truthiness: Disallow `list.length && ...` in JSX
 - no-unused-property-signature: Check for unused option in functions using object parameters types
 - no-useless-template-string: Enforce `` `Hello` `` -> `"Hello"`
 - one-line-if: Enforce `if (condition) ...` on one line when possible

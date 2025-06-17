@@ -1,5 +1,8 @@
 # eslint-config [![npm](https://img.shields.io/npm/v/@arnaud-barre/eslint-config)](https://www.npmjs.com/package/@arnaud-barre/eslint-config)
 
+> [!IMPORTANT]
+> Starting in v6, this package ships without type-aware linting and should we used with https://www.npmjs.com/package/@arnaud-barre/type-lint-config
+
 ## Install
 
 ```sh

@@ -35,8 +35,6 @@ export const rule: TSESLint.RuleModule<
     if (!isAbsolute(context.filename)) {
       throw new Error("context.filename is not absolute");
     }
-    const { tsconfigRootDir } = context.parserOptions;
-    if (!tsconfigRootDir) throw new Error("tsconfigRootDir not set");
     const topLevelImports = new Set<TSESTree.ImportDeclaration>();
     const sources = new Set<string>();
     return {

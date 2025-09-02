@@ -12,20 +12,19 @@ yarn add --dev eslint @arnaud-barre/eslint-config
 ```js
 // eslint.config.js
 import baseConfig from "@arnaud-barre/eslint-config";
-import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
-export default tseslint.config(...baseConfig);
+export default defineConfig(baseConfig);
 ```
 
 ```json
 // package.json
 "scripts": {
-  "lint": "bun lint-ci --fix --cache",
-  "lint-ci": "eslint --max-warnings 0"
+  "lint": "eslint --max-warnings 0 --concurrency auto"
 }
 ```
 
-## TS config (5.8)
+## TS config (5.9)
 
 ### Web project
 
@@ -60,7 +59,7 @@ export default tseslint.config(...baseConfig);
 }
 ```
 
-### Node project (20-22)
+### Node project (22)
 
 ```json
 {
@@ -69,7 +68,7 @@ export default tseslint.config(...baseConfig);
     "target": "ES2022",
     "module": "ESNext",
     "moduleDetection": "force",
-    "lib": ["ES2023"],
+    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
     "types": ["node"],
     "skipLibCheck": true
 
@@ -78,7 +77,31 @@ export default tseslint.config(...baseConfig);
 }
 ```
 
-## Prettier config (3.5.3)
+### Node project (24)
+
+```json
+{
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "lib": [
+      "es2024",
+      "ESNext.Array",
+      "ESNext.Collection",
+      "ESNext.Iterator",
+      "ESNext.Promise"
+    ],
+    "types": ["node"],
+    "skipLibCheck": true
+
+    /* Same as web */
+  }
+}
+```
+
+## Prettier config (3.6.2)
 
 ### Web projects
 

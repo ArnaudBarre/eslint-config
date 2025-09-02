@@ -1,11 +1,11 @@
 {
   "include": ["**/*.ts"],
   "compilerOptions": {
-    /* Target node 20 */
+    /* Target node 22 */
     "target": "ES2022",
     "module": "ESNext",
     "moduleDetection": "force",
-    "lib": ["ES2023"],
+    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
     "types": ["node"],
     "skipLibCheck": true,
 

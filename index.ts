@@ -3,6 +3,7 @@ import restrictedGlobals from "confusing-browser-globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import unicorn from "eslint-plugin-unicorn";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import { rules } from "./plugin/index.ts";
@@ -14,7 +15,7 @@ import { rules } from "./plugin/index.ts";
 */
 
 // eslint-disable-next-line @arnaud-barre/no-default-export
-export default tseslint.config(
+export default defineConfig(
   { ignores: ["**/dist", "**/*.js"] },
   {
     files: ["**/*.ts", "**/*.tsx"],
@@ -23,7 +24,7 @@ export default tseslint.config(
       unicorn,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      "@arnaud-barre": { rules },
+      "@arnaud-barre": { rules } as any,
     },
     languageOptions: {
       parser: tseslint.parser,

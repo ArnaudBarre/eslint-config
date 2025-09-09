@@ -216,6 +216,7 @@ export default defineConfig(
       "unicorn/prefer-array-index-of": "warn",
       "unicorn/prefer-array-some": "warn",
       "unicorn/prefer-at": "warn",
+      "unicorn/prefer-bigint-literals": "warn",
       "unicorn/prefer-code-point": "warn",
       "unicorn/prefer-default-parameters": "warn",
       "unicorn/prefer-export-from": ["warn", { ignoreUsedVariables: true }],
@@ -228,6 +229,7 @@ export default defineConfig(
       "unicorn/prefer-string-slice": "warn",
       "unicorn/prefer-string-trim-start-end": "warn",
       "unicorn/prefer-top-level-await": "warn",
+      "unicorn/require-module-attributes": "warn",
       "unicorn/throw-new-error": "warn",
 
       "react-refresh/only-export-components": [

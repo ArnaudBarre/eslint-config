@@ -1,6 +1,5 @@
 import { execSync } from "node:child_process";
 import { readdirSync, rmSync, writeFileSync } from "node:fs";
-import { build } from "esbuild";
 import packageJSON from "./package.json" with { type: "json" };
 
 rmSync("dist", { force: true, recursive: true });
@@ -19,13 +18,10 @@ const lines = [
 
 writeFileSync("plugin/index.ts", lines.join("\n"));
 
-await build({
-  bundle: true,
-  entryPoints: ["index.ts"],
-  outfile: "dist/index.js",
-  platform: "node",
-  target: "node18",
-  format: "esm",
+await Bun.build({
+  entrypoints: ["index.ts"],
+  outdir: "dist",
+  target: "node",
   packages: "external",
 });
 execSync("cp LICENSE README.md dist/");

@@ -6,7 +6,7 @@
     "module": "ESNext",
     "moduleDetection": "force",
     "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
-    "types": ["node"],
+    "types": ["bun"],
     "skipLibCheck": true,
 
     /* Bundler mode */

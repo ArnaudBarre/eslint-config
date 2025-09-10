@@ -79,6 +79,7 @@ export default defineConfig(
       "no-useless-escape": "warn",
       "no-useless-return": "warn",
       "prefer-regex-literals": "warn",
+      "preserve-caught-error": "warn",
       "require-unicode-regexp": "warn",
       "wrap-iife": "warn",
       "yoda": "warn",

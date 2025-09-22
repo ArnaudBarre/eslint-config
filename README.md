@@ -37,7 +37,7 @@ export default defineConfig(baseConfig);
     "module": "ESNext",
     "moduleDetection": "force",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vite/client"],
+    "types": ["vite/client", "tsl/patches"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -49,8 +49,6 @@ export default defineConfig(baseConfig);
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
     "noUncheckedSideEffectImports": true,
@@ -69,7 +67,7 @@ export default defineConfig(baseConfig);
     "module": "ESNext",
     "moduleDetection": "force",
     "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
-    "types": ["node"],
+    "types": ["node", "tsl/patches"],
     "skipLibCheck": true
 
     /* Same as web */
@@ -93,7 +91,7 @@ export default defineConfig(baseConfig);
       "ESNext.Iterator",
       "ESNext.Promise"
     ],
-    "types": ["node"],
+    "types": ["node", "tsl/patches"],
     "skipLibCheck": true
 
     /* Same as web */

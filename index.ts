@@ -148,7 +148,7 @@ export default defineConfig(
       ],
       "@typescript-eslint/no-unused-vars": [
         "warn",
-        { argsIgnorePattern: "^_" },
+        { argsIgnorePattern: "^__" },
       ],
       "@typescript-eslint/no-useless-constructor": "warn",
       "@typescript-eslint/adjacent-overload-signatures": "warn",

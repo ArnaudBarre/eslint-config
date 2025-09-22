@@ -1,4 +1,4 @@
-import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 import baseConfig from "./dist/index.js";
 
-export default tseslint.config({ ignores: ["plugin/tests"] }, ...baseConfig);
+export default defineConfig({ ignores: ["plugin/tests"] }, ...baseConfig);

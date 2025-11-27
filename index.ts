@@ -144,6 +144,7 @@ export default defineConfig(
           allowShortCircuit: true,
           allowTernary: true,
           allowTaggedTemplates: true,
+          enforceForJSX: true,
         },
       ],
       "@typescript-eslint/no-unused-vars": [

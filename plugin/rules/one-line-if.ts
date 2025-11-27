@@ -38,7 +38,16 @@ export const rule: TSESLint.RuleModule<"error"> = {
         }
         const body = node.consequent.body[0];
         context.report({
-          node,
+          loc: {
+            start: {
+              line: node.loc.start.line,
+              column: node.consequent.loc.start.column,
+            },
+            end: {
+              line: node.loc.start.line,
+              column: node.consequent.loc.start.column + 1,
+            },
+          },
           messageId: "error",
           fix: (fixer) => [
             fixer.removeRange([node.consequent.range[0], body.range[0]]),

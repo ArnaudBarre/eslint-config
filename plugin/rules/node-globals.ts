@@ -1,9 +1,12 @@
 import type { TSESLint, TSESTree } from "@typescript-eslint/utils";
 import type { Cases } from "../tests/types.ts";
 
-export const rule: TSESLint.RuleModule<"error"> = {
+export const rule: TSESLint.RuleModule<"uselessImport" | "useGlobalThis"> = {
   meta: {
-    messages: { error: "Use global instead" },
+    messages: {
+      uselessImport: "Use global instead",
+      useGlobalThis: "Use globalThis instead",
+    },
     type: "suggestion",
     schema: [],
   },
@@ -19,7 +22,9 @@ export const rule: TSESLint.RuleModule<"error"> = {
           && s.imported.type === "Identifier"
           && names.includes(s.imported.name),
       );
-      if (specifier) context.report({ node: specifier, messageId: "error" });
+      if (specifier) {
+        context.report({ node: specifier, messageId: "uselessImport" });
+      }
     };
 
     return {
@@ -29,7 +34,7 @@ export const rule: TSESLint.RuleModule<"error"> = {
           case "node:process":
           case "console":
           case "node:console":
-            context.report({ node, messageId: "error" });
+            context.report({ node, messageId: "uselessImport" });
             break;
           case "buffer":
           case "node:buffer":
@@ -47,6 +52,23 @@ export const rule: TSESLint.RuleModule<"error"> = {
             break;
         }
       },
+      MemberExpression(node) {
+        if (
+          node.object.type === "Identifier"
+          && node.object.name === "global"
+        ) {
+          context.report({ node, messageId: "useGlobalThis" });
+        }
+      },
+      BinaryExpression(node) {
+        if (
+          node.operator === "in"
+          && node.right.type === "Identifier"
+          && node.right.name === "global"
+        ) {
+          context.report({ node, messageId: "useGlobalThis" });
+        }
+      },
     };
   },
 };
@@ -62,18 +84,32 @@ export const cases: Cases = {
     {
       name: "Ban module",
       code: 'import "process";',
+      errorId: "uselessImport",
     },
     {
       name: "With node prefix",
       code: 'import * as csl from "node:console";',
+      errorId: "uselessImport",
     },
     {
       name: "Named export",
       code: 'import { URL } from "url";',
+      errorId: "uselessImport",
     },
     {
       name: "Renamed export",
       code: 'import { URL as Foo } from "url";',
+      errorId: "uselessImport",
+    },
+    {
+      name: "Global in binary expression",
+      code: "foo in global;",
+      errorId: "useGlobalThis",
+    },
+    {
+      name: "Global in member expression",
+      code: "global.foo;",
+      errorId: "useGlobalThis",
     },
   ],
 };

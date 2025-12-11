@@ -1,7 +1,7 @@
 {
   "name": "@arnaud-barre/eslint-config",
   "description": "TS-React focused ESLint flat configuration",
-  "version": "6.1.4",
+  "version": "6.1.5",
   "license": "MIT",
   "type": "module",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
@@ -14,7 +14,7 @@
     "ci": "tsc && bun run test && bun prettier-ci && bun run build && bun lint",
     "prettier": "prettier --write '**/*.{js,cjs,ts,json,md}'",
     "prettier-ci": "bun prettier --check",
-    "release": "bun run ci && cd dist && bun publish"
+    "release": "bun run ci && cd dist && npm publish"
   },
   "prettier": {
     "quoteProps": "consistent",

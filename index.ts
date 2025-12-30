@@ -23,7 +23,7 @@ export default defineConfig(
       "@typescript-eslint": tseslint.plugin,
       unicorn,
       "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
+      "react-refresh": reactRefresh.plugin,
       "@arnaud-barre": { rules } as any,
     },
     languageOptions: {

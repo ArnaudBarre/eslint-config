@@ -89,8 +89,8 @@ const qualifiedTerms = [
 ];
 const locations = ["billing", "shipping"];
 
-const isValidAutocomplete = (_value: string) => {
-  const value = _value.toLowerCase().trim();
+const isValidAutocomplete = (__value: string) => {
+  const value = __value.toLowerCase().trim();
   if (stateTerms.includes(value) || value === "") return true;
 
   const autocompleteTerms = value.split(" ");

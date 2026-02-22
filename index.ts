@@ -150,9 +150,10 @@ export default defineConfig(
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^__",
-          ignoreRestSiblings: false,
+          args: "all",
+          argsIgnorePattern: "^_[^_]|^_$",
+          varsIgnorePattern: "^_[^_]|^_$",
+          reportUsedIgnorePattern: true,
         },
       ],
       "@typescript-eslint/no-useless-constructor": "warn",
@@ -198,6 +199,7 @@ export default defineConfig(
 
       "unicorn/consistent-date-clone": "warn",
       "unicorn/consistent-destructuring": "warn",
+      "unicorn/isolated-functions": "warn",
       "unicorn/no-array-for-each": "warn",
       "unicorn/no-await-in-promise-methods": "warn",
       "unicorn/no-empty-file": "warn",

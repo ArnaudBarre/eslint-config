@@ -24,7 +24,7 @@ export default defineConfig(baseConfig);
 }
 ```
 
-## TS config (5.9)
+## TS config (6.0)
 
 ### Web project
 
@@ -36,7 +36,7 @@ export default defineConfig(baseConfig);
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleDetection": "force",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM"],
     "types": ["vite/client", "tsl/patches"],
     "skipLibCheck": true,
 
@@ -48,10 +48,8 @@ export default defineConfig(baseConfig);
     "noEmit": true,
 
     /* Linting */
-    "strict": true,
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": true,
-    "noUncheckedSideEffectImports": true,
     "noPropertyAccessFromIndexSignature": true
   }
 }
